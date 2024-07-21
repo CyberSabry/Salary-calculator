@@ -52,11 +52,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 body {
 
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
     background-color: var(--background);
 }
 
