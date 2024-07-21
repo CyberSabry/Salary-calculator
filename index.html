@@ -11,26 +11,26 @@
     <main class="salary-calculator">
 
         <!-- Top part with icon, Display name, and size controls -->
-        <div class="salary-calculator__top-part">
-            <div class="top-part__icon-and-name-side">
-                <svg class="top-part__app-icon">
+        <div class="salary-calculator__title-bar flex-space-between">
+            <div class="title-bar__header flex">
+                <svg class="header__icon">
                     <use href="#calculator-app-icon"></use>
                 </svg>
-                <h1 class="icon-and-name-side__app-display-name">Salary calculator</h1>
+                <h1 class="header__title">Salary calculator</h1>
             </div>
-            <div class="top-part__app-size-controls-side">
-                <button class="app-size-controls-side__buttons minimize">
-                    <svg class="controls-side__buttons__svg">
+            <div class="title-bar__action-btns flex">
+                <button class="action-btns__btn minimize">
+                    <svg class="btn__icon">
                         <use href="#minimize-icon"></use>
                     </svg>                                                                                                                         
                 </button>
-                <button class="app-size-controls-side__buttons maximize">
-                    <svg class="controls-side__buttons__svg">
+                <button class="action-btns__btn maximize">
+                    <svg class="btn__icon">
                         <use href="#maximize-icon"></use>
                     </svg>
                 </button>
-                <button class="app-size-controls-side__buttons close">
-                    <svg class="controls-side__buttons__svg">
+                <button class="action-btns__btn close">
+                    <svg class="btn__icon">
                         <use href="#close-icon"></use>
                     </svg>
                 </button>
@@ -38,55 +38,51 @@
         </div>
 
         <!-- Tabs controls for Calculator and Configuration -->
-        <div class="salary-calculator__app-tabs-controls">
-            <button class="app-tabs-controls__buttons calculator-tab-button" value="0">Calculator</button>
-            <button class="app-tabs-controls__buttons configuration-tab-button" value="1">Configuration</button>
+        <div class="salary-calculator__tab-bar flex-start">
+            <button class="tab-bar__btn calculator-tab-btn" value="0">Calculator</button>
+            <button class="tab-bar__btn configuration-tab-btn" value="1">Configuration</button>
         </div>
 
-        <!-- Tabs content -->
-        <div class="salary-calculator__app-tabs">
-
-            <!-- Calculator tab -->
-            <div class="app-tabs__calculator-tab">
-                <div class="row">
-                    <label for="salary" class="calculator-tab__label">Salary:</label>
-                    <div class="calculator-tab__input-container">
-                        <input type="number" name="salary" class="calculator-tab__text-fields" id="salary" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <label for="days-absent" class="calculator-tab__label">Days absent:</label>
-                    <div class="calculator-tab__input-container">
-                        <input type="number" name="days-absent" class="calculator-tab__text-fields" id="days-absent" value="0">
-                    </div>
-                </div>
-                <div class="row">
-                    <label for="overtime-hours" class="calculator-tab__label">Overtime hours:</label>
-                    <div class="calculator-tab__input-container">
-                        <input type="number" name="overtime-hours" class="calculator-tab__text-fields" id="overtime-hours" value="0">
-                    </div>
+        <!-- Calculator tab -->
+        <div class="app-tabs__calculator-tab">
+            <div class="row">
+                <label for="salary" class="calculator-tab__label">Salary:</label>
+                <div class="calculator-tab__input-container">
+                    <input type="number" name="salary" class="calculator-tab__text-fields" id="salary" required>
                 </div>
             </div>
+            <div class="row">
+                <label for="days-absent" class="calculator-tab__label">Days absent:</label>
+                <div class="calculator-tab__input-container">
+                    <input type="number" name="days-absent" class="calculator-tab__text-fields" id="days-absent" value="0">
+                </div>
+            </div>
+            <div class="row">
+                <label for="overtime-hours" class="calculator-tab__label">Overtime hours:</label>
+                <div class="calculator-tab__input-container">
+                    <input type="number" name="overtime-hours" class="calculator-tab__text-fields" id="overtime-hours" value="0">
+                </div>
+            </div>
+        </div>
 
-            <!-- Configuration tab -->
-            <div class="app-tabs__configuration-tab">
-                <div class="row">
-                    <label for="base-days" class="configuration-tab__label">Base days:</label>
-                    <div class="configuration-tab__input-container">
-                        <input type="number" name="base-days" class="configuration-tab__text-fields" id="base-days" value="30" required>
-                    </div>
+        <!-- Configuration tab -->
+        <div class="app-tabs__configuration-tab">
+            <div class="row">
+                <label for="base-days" class="configuration-tab__label">Base days:</label>
+                <div class="configuration-tab__input-container">
+                    <input type="number" name="base-days" class="configuration-tab__text-fields" id="base-days" value="30" required>
                 </div>
-                <div class="row">
-                    <label for="base-hours" class="configuration-tab__label">Base hours:</label>
-                    <div class="configuration-tab__input-container">
-                        <input type="number" name="base-hours" class="configuration-tab__text-fields" id="base-hours" value="225" required>
-                    </div>
+            </div>
+            <div class="row">
+                <label for="base-hours" class="configuration-tab__label">Base hours:</label>
+                <div class="configuration-tab__input-container">
+                    <input type="number" name="base-hours" class="configuration-tab__text-fields" id="base-hours" value="225" required>
                 </div>
-                <div class="row">
-                    <label for="overtime-rate" class="configuration-tab__label">Overtime rate:</label>
-                    <div class="configuration-tab__input-container">
-                        <input type="number" name="overtime-rate" class="configuration-tab__text-fields" id="overtime-rate" value="1.5" required>
-                    </div>
+            </div>
+            <div class="row">
+                <label for="overtime-rate" class="configuration-tab__label">Overtime rate:</label>
+                <div class="configuration-tab__input-container">
+                    <input type="number" name="overtime-rate" class="configuration-tab__text-fields" id="overtime-rate" value="1.5" required>
                 </div>
             </div>
         </div>
@@ -125,7 +121,7 @@
     <script src="main.js"></script>
 
     <!-- SVGs -->
-    <svg xmlns="http://www.w3.org/2000/svg">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="calculator-app-icon" viewBox="0 0 32 32" fill="none">
             <path d="M4 7H22V20H4V7Z" fill="#008382"/>
             <line x1="22" y1="6.5" x2="3" y2="6.5" stroke="black"/>
@@ -216,13 +212,13 @@
             <rect x="22" y="12" width="1" height="1" fill="#810518"/>
         </symbol>
     </svg>
-    <svg xmlns="http://www.w3.org/2000/svg">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="minimize-icon" viewBox="0 0 17 20" fill="none">
                 <line x1="1.6575e-07" y1="18" x2="17" y2="18" stroke="black" stroke-width="3"/>
                 <line x1="4.14375e-08" y1="0.5" x2="17" y2="0.500002" stroke="black" stroke-opacity="0.01"/>
         </symbol>
     </svg>
-    <svg xmlns="http://www.w3.org/2000/svg">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="maximize-icon" viewBox="0 0 16 16" fill="none">
             <mask id="path-1-inside-1_55_12" fill="white">
             <path d="M0 0H16V16H0V0Z"/>
@@ -230,12 +226,12 @@
             <path d="M0 0V-4H-2V0H0ZM16 0H18V-4H16V0ZM16 16V18H18V16H16ZM0 16H-2V18H0V16ZM0 4H16V-4H0V4ZM14 0V16H18V0H14ZM16 14H0V18H16V14ZM2 16V0H-2V16H2Z" fill="black" mask="url(#path-1-inside-1_55_12)"/>
         </symbol>
     </svg>
-    <svg xmlns="http://www.w3.org/2000/svg">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="close-icon" viewBox="0 0 20 20" fill="none">
             <path d="M2 16.5629L1.29289 15.8558L0.585786 16.5629L1.29289 17.27L2 16.5629ZM8.57435 9.98856L9.28145 10.6957L9.98856 9.98856L9.28145 9.28145L8.57435 9.98856ZM3.41421 17.9771L2.70711 18.6842L3.41421 19.3913L4.12132 18.6842L3.41421 17.9771ZM9.98856 11.4028L10.6957 10.6957L9.98856 9.98856L9.28145 10.6957L9.98856 11.4028ZM16.5629 17.9771L15.8558 18.6842L16.5629 19.3913L17.27 18.6842L16.5629 17.9771ZM17.9771 16.5629L18.6842 17.27L19.3913 16.5629L18.6842 15.8558L17.9771 16.5629ZM11.4028 9.98856L10.6957 9.28145L9.98856 9.98856L10.6957 10.6957L11.4028 9.98856ZM17.9771 3.41421L18.6842 4.12132L19.3913 3.41421L18.6842 2.70711L17.9771 3.41421ZM16.5629 2L17.27 1.29289L16.5629 0.585786L15.8558 1.29289L16.5629 2ZM9.98856 8.57435L9.28145 9.28145L9.98856 9.98856L10.6957 9.28145L9.98856 8.57435ZM3.41421 2L4.12132 1.29289L3.41421 0.585786L2.70711 1.29289L3.41421 2ZM2 3.41421L1.29289 2.70711L0.585786 3.41421L1.29289 4.12132L2 3.41421ZM2.70711 17.27L9.28145 10.6957L7.86724 9.28145L1.29289 15.8558L2.70711 17.27ZM4.12132 17.27L2.70711 15.8558L1.29289 17.27L2.70711 18.6842L4.12132 17.27ZM9.28145 10.6957L2.70711 17.27L4.12132 18.6842L10.6957 12.1099L9.28145 10.6957ZM17.27 17.27L10.6957 10.6957L9.28145 12.1099L15.8558 18.6842L17.27 17.27ZM17.27 15.8558L15.8558 17.27L17.27 18.6842L18.6842 17.27L17.27 15.8558ZM10.6957 10.6957L17.27 17.27L18.6842 15.8558L12.1099 9.28145L10.6957 10.6957ZM17.27 2.70711L10.6957 9.28145L12.1099 10.6957L18.6842 4.12132L17.27 2.70711ZM15.8558 2.70711L17.27 4.12132L18.6842 2.70711L17.27 1.29289L15.8558 2.70711ZM10.6957 9.28145L17.27 2.70711L15.8558 1.29289L9.28145 7.86724L10.6957 9.28145ZM2.70711 2.70711L9.28145 9.28145L10.6957 7.86724L4.12132 1.29289L2.70711 2.70711ZM2.70711 4.12132L4.12132 2.70711L2.70711 1.29289L1.29289 2.70711L2.70711 4.12132ZM9.28145 9.28145L2.70711 2.70711L1.29289 4.12132L7.86724 10.6957L9.28145 9.28145Z" fill="black"/>
         </symbol>
     </svg>
-    <svg xmlns="http://www.w3.org/2000/svg">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="windows-icon" viewBox="0 0 16 14" fill="none">
             <path d="M4 7V6H6V8H4H2V6H3V7H4Z" fill="#FE0000"/>
             <path d="M4 10V9H6V11H4H2V9H3V10H4Z" fill="#0000FE"/>
