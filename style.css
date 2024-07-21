@@ -1,0 +1,300 @@
+@font-face {
+    font-family: 'ms-sans-serif';
+    src: url(Assets/Fonts/MS\ Sans\ Serif.ttf) format('truetype');
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+:root {
+
+    --background: hsl(180, 100%, 25%);
+    --main: hsl(0, 0%, 78%);
+    --accent: hsl(243, 100%, 26%);
+    --light-text: hsl(0, 0%, 100%);
+    --dark-text: hsl(0, 0%, 0%);
+    --light-border: hsl(0, 0%, 87%);
+    --dark-border: hsl(0, 0%, 5%);
+    --light-box-shadow: hsl(0, 0%, 87%);
+    --dark-box-shadow: hsl(120, 0%, 52%);
+
+    --border-width: 2px;
+    --border-style: solid;
+
+    --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
+    --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
+
+    --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
+    --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
+}
+
+/* Utility classes */
+.flex {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-column {
+
+    flex-direction: column;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'ms-sans-serif';
+}
+
+body {
+
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: var(--background);
+}
+
+.salary-calculator {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -30%, -70%);
+    padding: 4px;
+    background-color: var(--main);
+    border: var(--border-width) var(--border-style);
+    border-color: var(--outwards-border);
+    box-shadow: var(--outwards-box-shadow);
+}
+
+.salary-calculator__top-part {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    background-color: var(--accent);
+}
+.top-part__icon-and-name-side {
+
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 0.5em;
+}
+.top-part__app-icon {
+
+    width: 24px;
+    height: 24px;
+}
+.icon-and-name-side__app-display-name {
+
+    font-size: 1rem;
+    font-weight: 200;
+    color: var(--light-text);
+}
+
+.top-part__app-size-controls-side {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1em;
+}
+.app-size-controls-side__buttons {
+
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    border: var(--border-width) var(--border-style);
+    border-color: var(--outwards-border);
+    box-shadow: var(--outwards-box-shadow);
+    background-color: var(--main);
+    color: var(--dark-text);
+    cursor: pointer;
+}
+.controls-side__buttons__svg {
+
+    width: 100%;
+    height: 100%;
+}
+
+.salary-calculator__app-tabs-controls {
+
+    margin-top: 1em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+}
+.app-tabs-controls__buttons {
+
+    position: relative;
+    top: 4px;
+    padding: 5px;
+    font-size: 0.8rem;
+    border-width: calc(var(--border-width) * 2) var(--border-width) 0 calc(var(--border-width) * 2);
+    border-style: var(--border-style);
+    border-color: var(--outwards-border);
+    background-color: var(--main);
+    color: var(--dark-text);
+    cursor: pointer;
+}
+.calculator-tab-button {
+
+    z-index: 1;
+}
+.configuration-tab-button {
+    z-index: -1;
+}
+
+
+.salary-calculator__app-tabs {
+
+    width: 90%;
+}
+
+.app-tabs__calculator-tab,
+.app-tabs__configuration-tab {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5em;
+    font-size: 0.7rem;
+    padding: 20px;
+    border: var(--border-width) var(--border-style);
+    border-color: var(--outwards-border);
+    box-shadow: var(--outwards-box-shadow);
+    z-index: -2;
+}
+.row {
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+}
+.calculator-tab__input-container,
+.configuration-tab__input-container {
+
+    width: 20%;
+    min-width: 25px;
+    border: var(--border-width) var(--border-style);
+    border-color: var(--inwards-border);
+}
+.calculator-tab__text-fields,
+.configuration-tab__text-fields {
+
+    width: 100%;
+    padding: 5px;
+    border: none;
+}
+.app-tabs__configuration-tab {
+
+    display: none;
+}
+
+.salary-calculator__app-controls {
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 90%;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.app-controls__calculate-button {
+
+    padding: 6px;
+    border: var(--border-width) var(--border-style);
+    border-color: var(--outwards-border);
+    box-shadow: var(--outwards-box-shadow);
+    background-color: var(--main);
+    color: var(--dark-text);
+    cursor: pointer;
+}
+
+.task-bar {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 4px;
+    background-color: var(--main);
+    border: var(--border-width) var(--border-style);
+    border-color: var(--outwards-border);
+    box-shadow: var(--outwards-box-shadow);
+}
+
+.task-bar__open-apps-side {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.open-apps-side__app-icon,
+.windows-icon {
+
+    width: 16px;
+    height: 16px;
+}
+
+.open-apps-side__start-button,
+.open-apps-side__calculator-app {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+    padding: 5px;
+    border: var(--border-width) var(--border-style);
+    border-color: var(--outwards-border);
+    box-shadow: var(--outwards-box-shadow);
+    background-color: var(--main);
+    color: var(--dark-text);
+    cursor: pointer;
+}
+
+.task-bar__clock-side {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    padding: 5px;
+    border: var(--border-width) var(--border-style);
+    border-color: var(--inwards-border);
+    box-shadow: var(--accent);
+    background-color: var(--light-text);
+    color: var(--dark-text);
+    cursor: pointer;
+}
+
+.app-size-controls-side__buttons:active,
+.app-controls__calculate-button:active,
+.open-apps-side__start-button:active,
+.open-apps-side__calculator-app:active {
+    
+    border-color: var(--inwards-border);
+    box-shadow: var(--inwards-box-shadow);
+}
