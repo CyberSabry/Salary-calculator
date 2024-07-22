@@ -38,59 +38,69 @@
         </div>
 
         <!-- Tabs controls for Calculator and Configuration -->
-        <div class="salary-calculator__tab-bar flex-start">
-            <button class="tab-bar__btn calculator-tab-btn" value="0">Calculator</button>
-            <button class="tab-bar__btn configuration-tab-btn" value="1">Configuration</button>
-        </div>
+        <section class="salary-calculator__tabs-bar flex-start">
+            <button class="tabs-bar__btn calculator-tab-btn" value="0">Calculator</button>
+            <button class="tabs-bar__btn configuration-tab-btn" value="1">Configuration</button>
+        </section>
 
         <!-- Calculator tab -->
-        <div class="app-tabs__calculator-tab">
-            <div class="row">
+        <section class="calculator-tab">
+            <div class="row flex-space-between">
                 <label for="salary" class="calculator-tab__label">Salary:</label>
                 <div class="calculator-tab__input-container">
-                    <input type="number" name="salary" class="calculator-tab__text-fields" id="salary" required>
+                    <input type="number" name="salary" class="calculator-tab__input-fields" id="salary" required>
                 </div>
             </div>
-            <div class="row">
+            <div class="row flex-space-between">
                 <label for="days-absent" class="calculator-tab__label">Days absent:</label>
                 <div class="calculator-tab__input-container">
-                    <input type="number" name="days-absent" class="calculator-tab__text-fields" id="days-absent" value="0">
+                    <input type="number" name="days-absent" class="calculator-tab__input-fields" id="days-absent" value="0">
                 </div>
             </div>
-            <div class="row">
+            <div class="row flex-space-between">
                 <label for="overtime-hours" class="calculator-tab__label">Overtime hours:</label>
                 <div class="calculator-tab__input-container">
-                    <input type="number" name="overtime-hours" class="calculator-tab__text-fields" id="overtime-hours" value="0">
+                    <input type="number" name="overtime-hours" class="calculator-tab__input-fields" id="overtime-hours" value="0">
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Configuration tab -->
-        <div class="app-tabs__configuration-tab">
-            <div class="row">
+        <section class="configuration-tab">
+            <div class="row flex-space-between">
                 <label for="base-days" class="configuration-tab__label">Base days:</label>
                 <div class="configuration-tab__input-container">
-                    <input type="number" name="base-days" class="configuration-tab__text-fields" id="base-days" value="30" required>
+                    <input type="number" name="base-days" class="configuration-tab__input-fields" id="base-days" value="30" required>
                 </div>
             </div>
-            <div class="row">
+            <div class="row flex-space-between">
                 <label for="base-hours" class="configuration-tab__label">Base hours:</label>
                 <div class="configuration-tab__input-container">
-                    <input type="number" name="base-hours" class="configuration-tab__text-fields" id="base-hours" value="225" required>
+                    <input type="number" name="base-hours" class="configuration-tab__input-fields" id="base-hours" value="225" required>
                 </div>
             </div>
-            <div class="row">
+            <div class="row flex-space-between">
                 <label for="overtime-rate" class="configuration-tab__label">Overtime rate:</label>
                 <div class="configuration-tab__input-container">
-                    <input type="number" name="overtime-rate" class="configuration-tab__text-fields" id="overtime-rate" value="1.5" required>
+                    <input type="number" name="overtime-rate" class="configuration-tab__input-fields" id="overtime-rate" value="1.5" required>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Calculate button -->
-        <div class="salary-calculator__app-controls">
-            <button class="app-controls__calculate-button">Calculate</button>
-        </div>
+        <hr class="divider-line">
+
+        <!-- Results box where it shows the output -->
+        <section class="salary-calculator__results-box">
+            <p class="results-box__output-text days-worked">you have worked 24 days</p>
+            <p class="results-box__output-text overtime-hours-worked">you have worked 22 overtime hours</p>
+            <p class="results-box__output-text setcard-value">your setcard value is 1234</p>
+            <p class="results-box__output-text total-pay">your total pay is 123456</p>
+        </section>
+
+        <!-- Dialog box -->
+        <section class="salary-calculator__dialog-box flex-end">
+            <button class="dialog-box__btns calculate-btn">Calculate</button>
+        </section>
     </main>
 
     <!-- Windows 95 task bar like bottom task bar -->

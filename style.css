@@ -21,7 +21,7 @@ input[type="number"]::-webkit-inner-spin-button {
     --light-box-shadow: hsl(0, 0%, 87%);
     --dark-box-shadow: hsl(120, 0%, 52%);
 
-    --border-width: 2px;
+    --border-width: 4px;
     --border-style: solid;
 
     --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
@@ -57,7 +57,12 @@ input[type="number"]::-webkit-inner-spin-button {
     justify-content: flex-start;
     align-items: center;
 }
+.flex-end {
 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 
 * {
     margin: 0;
@@ -85,23 +90,24 @@ body {
 .salary-calculator__title-bar {
 
 /*  flex-space-between */
+    gap: 5em;
     width: 100%;
-    padding: 4px;
+    padding: 8px;
     background-color: var(--accent);
 }
 
 .title-bar__header {
 
-    gap: 0.5em;
+    gap: 1em;
 }
 .header__icon {
 
-    width: 24px;
-    height: 24px;
+    width: 48px;
+    height: 48px;
 }
 .header__title {
 
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 200;
     color: var(--light-text);
 }
@@ -114,9 +120,9 @@ body {
 
 .action-btns__btn {
 
-    width: 24px;
-    height: 24px;
-    padding: 2px;
+    width: 48px;
+    height: 48px;
+    padding: 4px;
     border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
     box-shadow: var(--outwards-box-shadow);
@@ -130,7 +136,7 @@ body {
     height: 100%;
 }
 
-.salary-calculator__tab-bar {
+.salary-calculator__tabs-bar {
 
     position: relative;
 /*  flex-start */
@@ -138,13 +144,13 @@ body {
     margin-block: 0.5em 0;
     margin-inline: auto;
 }
-.tab-bar__btn {
+.tabs-bar__btn {
 
     position: relative;
-    top: 4px;
-    padding: 4px;
-    font-size: 0.8rem;
-    border-width: calc(var(--border-width) * 2) var(--border-width) 0 calc(var(--border-width) * 2);
+    top: 6px;
+    padding: 8px 8px 16px 8px;
+    font-size: 1.4rem;
+    border-width: calc(var(--border-width) * 1.5) var(--border-width) 0 calc(var(--border-width) * 1.5);
     border-style: var(--border-style);
     border-color: var(--outwards-border);
     background-color: var(--main);
@@ -160,25 +166,15 @@ body {
     z-index: 10;
 }
 
-
-
-
-
-
-
-
-
-
-
-.app-tabs__calculator-tab,
-.app-tabs__configuration-tab {
+.calculator-tab,
+.configuration-tab {
 
     position: relative;
     width: 90%;
-    margin-block: 0 0.5em;
+    margin-block: 0 0;
     margin-inline: auto;
     gap: 0.5em;
-    font-size: 0.7rem;
+    font-size: 1.2rem;
     padding: 20px;
     border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
@@ -187,44 +183,61 @@ body {
 }
 .row {
 
+/*  flex-space-between */
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     gap: 0.5em;
 }
 .calculator-tab__input-container,
 .configuration-tab__input-container {
 
-    width: 20%;
+    width: 15%;
     min-width: 25px;
     border: var(--border-width) var(--border-style);
     border-color: var(--inwards-border);
 }
-.calculator-tab__text-fields,
-.configuration-tab__text-fields {
+.calculator-tab__input-fields,
+.configuration-tab__input-fields {
 
     width: 100%;
     padding: 5px;
     border: none;
 }
-.app-tabs__configuration-tab {
+.configuration-tab {
 
     display: none;
 }
 
-.salary-calculator__app-controls {
+.divider-line {
 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
     width: 90%;
-    margin: 0.5em 0 0.5em 0;
+    height: 4px;
+    margin-block: 1em;
+    margin-inline: auto;
 }
 
-.app-controls__calculate-button {
+.salary-calculator__results-box {
 
-    padding: 6px;
+    min-height: 100px;
+    width: 90%;
+    margin-block: 0 1em;
+    margin-inline: auto;
+    padding: 20px;
+    border: var(--border-width) var(--border-style);
+    border-color: var(--inwards-border);
+    box-shadow: var(--inwards-box-shadow);
+    background-color: var(--light-text);
+}
+
+.salary-calculator__dialog-box {
+
+/*  flex-end */
+    width: 90%;
+    margin-block: 0.5em;
+    margin-inline: auto;
+}
+.dialog-box__btns {
+
+    padding: 8px;
     border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
     box-shadow: var(--outwards-box-shadow);
