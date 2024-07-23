@@ -104,28 +104,28 @@
     </main>
 
     <!-- Windows 95 task bar like bottom task bar -->
-    <footer class="task-bar">
+    <footer class="task-bar flex-space-between">
 
-        <!-- Left side of the windows task bar showing open apps -->
-        <div class="task-bar__open-apps-side">
-            <button class="open-apps-side__start-button">
-                <svg class="windows-icon">
+        <!-- Open apps section it's just static :) -->
+        <section class="task-bar__btns-section flex">
+            <button class="btns-section__btn flex start-btn">
+                <svg class="start-btn__icon">
                     <use href="#windows-icon"></use>
                 </svg>                                                     
                 Start
             </button>
-            <button class="open-apps-side__calculator-app">
-                <svg class="open-apps-side__app-icon">
+            <button class="btns-section__btn flex calculator-app-btn">
+                <svg class="calculator-app__icon">
                     <use href="#calculator-app-icon"></use>
                 </svg>
                 Salary calculator
             </button>
-        </div>
+        </section>
 
-        <!-- Right side of the windows task bar showing the current time -->
-        <div class="task-bar__clock-side">
-            <p id="clock-value">12</p>
-        </div>
+        <!-- System tray that shows current time -->
+        <section class="task-bar__system-tray-section flex">
+            <p class="system-tray-section__clock-face" id="clock-value">12</p>
+        </section>
     </footer>
 
     <script src="main.js"></script>

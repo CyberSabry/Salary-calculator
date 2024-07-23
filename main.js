@@ -3,6 +3,11 @@ const salaryInput = document.querySelector('#user-salary');
 const absenceDaysInput = document.querySelector('#days-of-absence');
 const overtimeHoursInput = document.querySelector('#overtime-hours');
 
+const calculatorBtn = document.querySelector('.calculator-tab-btn');
+const configurationBtn = document.querySelector('.configuration-tab-btn');
+const calculatorTab = document.querySelector('.calculator-tab');
+const configurationTab = document.querySelector('.configuration-tab');
+
 function calculate(salary, absenceDays, overtimeHours) {
 
     const daysInMonth = getDaysInCurrentMonth();
@@ -29,7 +34,7 @@ function getDaysInCurrentMonth() {
     let lastDayOfCurrentMonth = new Date(year, month + 1, 0);
     return lastDayOfCurrentMonth.getDate();
 }
-function switchTabs(event) {
+function switchTabss(event) {
 
     const clickedTabBtn = event.target
     const calculatorBtn = document.querySelector('.calculator-tab-button');
@@ -55,4 +60,34 @@ function switchTabs(event) {
     }
 }
 
-document.addEventListener('click', switchTabs);
+function switchtabs(event) {
+
+    switch(event.target) {
+
+        case 0:
+            calculatorBtn.style.zIndex = 12;
+            calculatorTab.style.display = 'flex';
+            configurationBtn.style.zIndex = 10;
+            configurationTab.style.display = 'none';
+            console.log('switching to Calculator tab');
+            break;
+        case 1:
+            calculatorBtn.style.zIndex = 10;
+            calculatorTab.style.display = 'none';
+            configurationBtn.style.zIndex = 12;
+            configurationTab.style.display = 'flex';
+            console.log('switching to Configuration tab')
+            break;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+    calculatorBtn.onclick = switchtabs;
+    configurationBtn.onclick = switchtabs;
+})
+
+
+
+document.addEventListener('click', switchTabss);
