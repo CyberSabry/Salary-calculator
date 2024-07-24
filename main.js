@@ -42,52 +42,64 @@ function switchTabss(event) {
     const calculatorTab = document.querySelector('.app-tabs__calculator-tab');
     const configurationTab = document.querySelector('.app-tabs__configuration-tab');
 
-    if(clickedTabBtn.value == 0) {
+    if(clickedTabBtn.value === '0') {
 
-        calculatorBtn.style.zIndex = 1;
-        calculatorTab.style.display = 'flex';
-        configurationBtn.style.zIndex = -1;
+        calculatorBtn.style.zIndex = 12;
+        calculatorTab.style.display = 'block';
+        configurationBtn.style.zIndex = 10;
         configurationTab.style.display = 'none';
-        console.log('switching to Calculator tab')
+        console.log('switching to Calculator tab');
     }
-    else if(clickedTabBtn.value == 1) {
+    else if(clickedTabBtn.value === '1') {
 
-        calculatorBtn.style.zIndex = -1;
+        calculatorBtn.style.zIndex = 10;
         calculatorTab.style.display = 'none';
-        configurationBtn.style.zIndex = 1;
-        configurationTab.style.display = 'flex';
+        configurationBtn.style.zIndex = 12;
+        configurationTab.style.display = 'block';
         console.log('switching to Configuration tab')
     }
 }
 
-function switchtabs(event) {
+function switchTabs(event) {
 
-    switch(event.target) {
+    const clicked = event.target;
 
-        case 0:
+    switch(clicked.dataset.tab) {
+
+        case '0':
             calculatorBtn.style.zIndex = 12;
-            calculatorTab.style.display = 'flex';
+            calculatorTab.style.display = 'block';
             configurationBtn.style.zIndex = 10;
             configurationTab.style.display = 'none';
-            console.log('switching to Calculator tab');
+            console.log()
             break;
-        case 1:
+        case '1':
             calculatorBtn.style.zIndex = 10;
             calculatorTab.style.display = 'none';
             configurationBtn.style.zIndex = 12;
-            configurationTab.style.display = 'flex';
-            console.log('switching to Configuration tab')
+            configurationTab.style.display = 'block';
             break;
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    calculatorBtn.dataset.tab = '0';
+    configurationBtn.dataset.tab = '1';
 
-    calculatorBtn.onclick = switchtabs;
-    configurationBtn.onclick = switchtabs;
+    calculatorBtn.onclick = switchTabs;
+    configurationBtn.onclick = switchTabs;
+
+
 })
 
+flatpickr("#month-year", {
 
-
-document.addEventListener('click', switchTabss);
+    plugins: [
+        new monthSelectPlugin({
+          shorthand: true, //defaults to false
+          dateFormat: "m.y", //defaults to "F Y"
+          altFormat: "F Y", //defaults to "F Y"
+        })
+    ],
+});

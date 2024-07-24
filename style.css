@@ -3,12 +3,6 @@
     src: url(Assets/Fonts/MS\ Sans\ Serif.ttf) format('truetype');
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 :root {
 
     --background: hsl(180, 100%, 25%);
@@ -186,7 +180,7 @@ body {
 .calculator-tab__input-container,
 .configuration-tab__input-container {
 
-    width: 15%;
+    width: 20%;
     min-width: 25px;
     border: var(--border-width) var(--border-style);
     border-color: var(--inwards-border);
@@ -267,7 +261,7 @@ body {
 /*  flex */
     gap: 0.4em;
     padding: 8px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
     box-shadow: var(--outwards-box-shadow);
@@ -280,7 +274,7 @@ body {
 
 /*  flex */
     width: 100px;
-    height: 75px;
+    height: 50px;
     padding: 8px;
     font-size: 1.5rem;
     border: var(--border-width) var(--border-style);
@@ -291,12 +285,16 @@ body {
     cursor: pointer;
 }
 
-.start-btn__icon,
-.calculator-app__icon,
 .header__icon {
 
     width: 48px;
     height: 48px;
+}
+.start-btn__icon,
+.calculator-app__icon {
+
+    width: 24px;
+    height: 24px;
 }
 
 .action-btns__btn:active,

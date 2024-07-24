@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salary Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
 </head>
 <body>
 
@@ -39,12 +43,18 @@
 
         <!-- Tabs controls for Calculator and Configuration -->
         <section class="salary-calculator__tabs-bar flex-start">
-            <button class="tabs-bar__btn calculator-tab-btn" value="0">Calculator</button>
-            <button class="tabs-bar__btn configuration-tab-btn" value="1">Configuration</button>
+            <button class="tabs-bar__btn calculator-tab-btn">Calculator</button>
+            <button class="tabs-bar__btn configuration-tab-btn">Configuration</button>
         </section>
 
         <!-- Calculator tab -->
         <section class="calculator-tab">
+            <div class="row flex-space-between">
+                <label for="month-year" class="calculator-tab__label">Date:</label>
+                <div class="calculator-tab__input-container">
+                    <input type="text" name="month-year" class="calculator-tab__input-fields" id="month-year">
+                </div>
+            </div>
             <div class="row flex-space-between">
                 <label for="salary" class="calculator-tab__label">Salary:</label>
                 <div class="calculator-tab__input-container">
