@@ -1,29 +1,38 @@
-const calculateButton = document.querySelector('#calculate');
-const salaryInput = document.querySelector('#user-salary');
-const absenceDaysInput = document.querySelector('#days-of-absence');
+const dateInput = document.querySelector('#month-year');
+const salaryInput = document.querySelector('#salary');
+const daysAbsentInput = document.querySelector('#days-absent');
 const overtimeHoursInput = document.querySelector('#overtime-hours');
+const calculateButton = document.querySelector('.calculate-btn');
 
+/* Configuration tab inputs */
+const baseDaysInput = document.querySelector('#base-days');
+const baseHoursInput = document.querySelector('#base-hours');
+const overtimeRateInput = document.querySelector('#overtime-rate');
+
+/* Tabs and their tab switching buttons */
 const calculatorBtn = document.querySelector('.calculator-tab-btn');
 const configurationBtn = document.querySelector('.configuration-tab-btn');
 const calculatorTab = document.querySelector('.calculator-tab');
 const configurationTab = document.querySelector('.configuration-tab');
 
-function calculate(salary, absenceDays, overtimeHours) {
+function calculate() {
+
+    const salary = salaryInput.value;
+    const daysAbsent = daysAbsentInput.value;
+    const overtimeHours = overtimeHoursInput.value;
+
+    const baseDays = baseDaysInput.value;
+    const baseHours = baseHoursInput.value;
+    const overtimeRate = overtimeRateInput.value;
 
     const daysInMonth = getDaysInCurrentMonth();
-    const daysUserWorked = daysInMonth - absenceDays;
-    const baseDays = 30;
-    const baseHours = 225;
-    const overtimeRate = 1.5;
+    const daysWorked = daysInMonth - daysAbsent;
     const setcardValue = salary / 12;
 
     const overtimePay = (salary / baseHours) * overtimeRate * overtimeHours;
-    const salaryPay = (salary / baseDays) * daysUserWorked + overtimePay;
+    const salaryPay = (salary / baseDays) * daysWorked + overtimePay;
     
-    console.log(`you have worked ${daysUserWorked} days`);
-    console.log(`you have worked ${overtimeHours} overtime hours`);
-    console.log(`your setcard value is ${setcardValue}`);
-    console.log(salaryPay);
+    displayResults(daysWorked, overtimeHours, setcardValue, salaryPay);
 }
 
 function getDaysInCurrentMonth() {
@@ -34,6 +43,20 @@ function getDaysInCurrentMonth() {
     let lastDayOfCurrentMonth = new Date(year, month + 1, 0);
     return lastDayOfCurrentMonth.getDate();
 }
+
+function displayResults(daysWorked, overtimeHours, setcardValue, salaryPay) {
+
+    const daysWorkedOutput = document.querySelector('.days-worked');
+    const overtimeHoursOutput = document.querySelector('.overtime-hours');
+    const setcardValueOutput = document.querySelector('.setcard-value');
+    const salaryPayOutput = document.querySelector('.salary-pay');
+
+    daysWorkedOutput.innerHTML = `You have worked ${daysWorked} days,`;
+    overtimeHoursOutput.innerHTML = `And ${overtimeHours} overtime hours,`;
+    setcardValueOutput.innerHTML = `Your setcard value should be ${setcardValue},`;
+    salaryPayOutput.innerHTML = `Your salary pay is ${salaryPay}`;
+}
+
 function switchTabss(event) {
 
     const clickedTabBtn = event.target
@@ -82,7 +105,20 @@ function switchTabs(event) {
     }
 }
 
+flatpickr("#month-year", {
+    
+    plugins: [
+        new monthSelectPlugin({
+            shorthand: true, //defaults to false
+            dateFormat: "m.y", //defaults to "F Y"
+            altFormat: "F Y", //defaults to "F Y"
+        })
+    ],
+});
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    calculateButton.onclick = calculate;
 
     calculatorBtn.dataset.tab = '0';
     configurationBtn.dataset.tab = '1';
@@ -92,14 +128,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 })
-
-flatpickr("#month-year", {
-
-    plugins: [
-        new monthSelectPlugin({
-          shorthand: true, //defaults to false
-          dateFormat: "m.y", //defaults to "F Y"
-          altFormat: "F Y", //defaults to "F Y"
-        })
-    ],
-});
