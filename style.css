@@ -163,7 +163,6 @@ body {
     width: 90%;
     margin-block: 0 0;
     margin-inline: auto;
-    gap: 0.5em;
     font-size: 1.2rem;
     padding: 20px;
     border: var(--border-width) var(--border-style);
@@ -176,12 +175,14 @@ body {
 /*  flex-space-between */
     width: 100%;
     gap: 0.5em;
+    margin-block: 0.5em;
 }
 .calculator-tab__input-container,
 .configuration-tab__input-container {
 
     width: 20%;
     min-width: 25px;
+    height: 40px;
     border: var(--border-width) var(--border-style);
     border-color: var(--inwards-border);
 }
@@ -189,6 +190,7 @@ body {
 .configuration-tab__input-fields {
 
     width: 100%;
+    height: 100%;
     padding: 5px;
     border: none;
 }
@@ -212,6 +214,7 @@ body {
     margin-block: 0 1em;
     margin-inline: auto;
     padding: 10px;
+    line-height: 1.3em;
     border: var(--border-width) var(--border-style);
     border-color: var(--inwards-border);
     background-color: var(--light-text);
@@ -263,11 +266,22 @@ body {
     padding: 8px;
     font-size: 1.3rem;
     border: var(--border-width) var(--border-style);
-    border-color: var(--outwards-border);
-    box-shadow: var(--outwards-box-shadow);
+
     background-color: var(--main);
     color: var(--dark-text);
     cursor: pointer;
+}
+
+.start-btn {
+
+    border-color: var(--outwards-border);
+    box-shadow: var(--outwards-box-shadow);
+}
+
+.calculator-app-btn {
+
+    border-color: var(--inwards-border);
+    box-shadow: var(--inwards-box-shadow);
 }
 
 .task-bar__system-tray-section {

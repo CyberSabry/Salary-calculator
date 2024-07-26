@@ -1,3 +1,4 @@
+/* Calculator tab inputs */
 const dateInput = document.querySelector('#month-year');
 const salaryInput = document.querySelector('#salary');
 const daysAbsentInput = document.querySelector('#days-absent');
@@ -15,12 +16,17 @@ const configurationBtn = document.querySelector('.configuration-tab-btn');
 const calculatorTab = document.querySelector('.calculator-tab');
 const configurationTab = document.querySelector('.configuration-tab');
 
+/* All the inputs */
+const allInputs = document.querySelectorAll('.calculator-tab__input-fields, .configuration-tab__input-fields');
+
 function calculate() {
 
+    /* Calculator tab inputs */
     const salary = salaryInput.value;
     const daysAbsent = daysAbsentInput.value;
     const overtimeHours = overtimeHoursInput.value;
 
+    /* Configuration tab inputs */
     const baseDays = baseDaysInput.value;
     const baseHours = baseHoursInput.value;
     const overtimeRate = overtimeRateInput.value;
@@ -29,58 +35,45 @@ function calculate() {
     const daysWorked = daysInMonth - daysAbsent;
     const setcardValue = salary / 12;
 
-    const overtimePay = (salary / baseHours) * overtimeRate * overtimeHours;
-    const salaryPay = (salary / baseDays) * daysWorked + overtimePay;
+    const overtimePay = calculateOvertime(salary, baseHours, overtimeRate, overtimeHours);
+    const salaryPay = calculateSalary(salary, baseDays, daysWorked, overtimePay);
     
     displayResults(daysWorked, overtimeHours, setcardValue, salaryPay);
 }
 
+function calculateOvertime(salary, baseHours, overtimeRate, overtimeHours) {
+
+    return Math.floor((salary / baseHours) * overtimeRate * overtimeHours);
+}
+
+function calculateSalary(salary, baseDays, daysWorked, overtimePay) {
+
+    return Math.floor((salary / baseDays) * daysWorked + overtimePay);
+}
+
 function getDaysInCurrentMonth() {
 
-    let now = new Date();
-    let year = now.getFullYear();
-    let month = now.getMonth();
-    let lastDayOfCurrentMonth = new Date(year, month + 1, 0);
-    return lastDayOfCurrentMonth.getDate();
+    let date = dateInput.value.split('/');
+    let month = date[0];
+    let year = date[1];
+    let lastDayOfSelectedMonth = new Date(year, month, 0);
+    console.log(date);
+    console.log(month);
+    console.log(lastDayOfSelectedMonth);
+    return lastDayOfSelectedMonth.getDate();
 }
 
 function displayResults(daysWorked, overtimeHours, setcardValue, salaryPay) {
 
-    const daysWorkedOutput = document.querySelector('.days-worked');
-    const overtimeHoursOutput = document.querySelector('.overtime-hours');
-    const setcardValueOutput = document.querySelector('.setcard-value');
-    const salaryPayOutput = document.querySelector('.salary-pay');
+    const resultsBox = document.querySelector('.salary-calculator__results-box');
 
-    daysWorkedOutput.innerHTML = `You have worked ${daysWorked} days,`;
-    overtimeHoursOutput.innerHTML = `And ${overtimeHours} overtime hours,`;
-    setcardValueOutput.innerHTML = `Your setcard value should be ${setcardValue},`;
-    salaryPayOutput.innerHTML = `Your salary pay is ${salaryPay}`;
-}
+    resultsBox.innerHTML = `
+    You have worked ${daysWorked} days,<br>
+    ${overtimeHours} overtime hours,<br>
+    Your setcard value should be ${setcardValue},<br>
+    Your salary pay is ${salaryPay}.
+    `;
 
-function switchTabss(event) {
-
-    const clickedTabBtn = event.target
-    const calculatorBtn = document.querySelector('.calculator-tab-button');
-    const configurationBtn = document.querySelector('.configuration-tab-button');
-    const calculatorTab = document.querySelector('.app-tabs__calculator-tab');
-    const configurationTab = document.querySelector('.app-tabs__configuration-tab');
-
-    if(clickedTabBtn.value === '0') {
-
-        calculatorBtn.style.zIndex = 12;
-        calculatorTab.style.display = 'block';
-        configurationBtn.style.zIndex = 10;
-        configurationTab.style.display = 'none';
-        console.log('switching to Calculator tab');
-    }
-    else if(clickedTabBtn.value === '1') {
-
-        calculatorBtn.style.zIndex = 10;
-        calculatorTab.style.display = 'none';
-        configurationBtn.style.zIndex = 12;
-        configurationTab.style.display = 'block';
-        console.log('switching to Configuration tab')
-    }
 }
 
 function switchTabs(event) {
@@ -110,7 +103,7 @@ flatpickr("#month-year", {
     plugins: [
         new monthSelectPlugin({
             shorthand: true, //defaults to false
-            dateFormat: "m.y", //defaults to "F Y"
+            dateFormat: "m/Y", //defaults to "F Y"
             altFormat: "F Y", //defaults to "F Y"
         })
     ],
@@ -126,5 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
     calculatorBtn.onclick = switchTabs;
     configurationBtn.onclick = switchTabs;
 
+    allInputs.forEach( (input) => {
 
+        input.addEventListener('focus', (event) => {
+
+            event.target.select();
+        })
+    })
 })
