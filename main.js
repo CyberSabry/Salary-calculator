@@ -22,33 +22,40 @@ const allInputs = document.querySelectorAll('.calculator-tab__input-fields, .con
 function calculate() {
 
     /* Calculator tab inputs */
-    const salary = salaryInput.value;
-    const daysAbsent = daysAbsentInput.value;
-    const overtimeHours = overtimeHoursInput.value;
-
+    const salary = cleanAndConvert(salaryInput);
+    const daysAbsent = cleanAndConvert(daysAbsentInput);
+    const overtimeHours = cleanAndConvert(overtimeHoursInput);
+    console.log(salary)
     /* Configuration tab inputs */
-    const baseDays = baseDaysInput.value;
-    const baseHours = baseHoursInput.value;
-    const overtimeRate = overtimeRateInput.value;
+    const baseDays = cleanAndConvert(baseDaysInput);
+    const baseHours = cleanAndConvert(baseHoursInput);
+    const overtimeRate = cleanAndConvert(overtimeRateInput);
 
     const daysInMonth = getDaysInCurrentMonth();
     const daysWorked = daysInMonth - daysAbsent;
-    const setcardValue = salary / 12;
+    const setcardValue = Math.round(salary / 12);
 
     const overtimePay = calculateOvertime(salary, baseHours, overtimeRate, overtimeHours);
     const salaryPay = calculateSalary(salary, baseDays, daysWorked, overtimePay);
-    
+
     displayResults(daysWorked, overtimeHours, setcardValue, salaryPay);
 }
 
 function calculateOvertime(salary, baseHours, overtimeRate, overtimeHours) {
 
-    return Math.floor((salary / baseHours) * overtimeRate * overtimeHours);
+    return Math.round((salary / baseHours) * overtimeRate * overtimeHours);
 }
 
 function calculateSalary(salary, baseDays, daysWorked, overtimePay) {
 
-    return Math.floor((salary / baseDays) * daysWorked + overtimePay);
+    return Math.round((salary / baseDays) * daysWorked + overtimePay);
+}
+
+function cleanAndConvert(string) {
+
+    let stringValue = string.value;
+    let cleanedString = stringValue.replace(/[a-zA-Z]/g, '');
+    return Number(cleanedString);
 }
 
 function getDaysInCurrentMonth() {
@@ -57,9 +64,6 @@ function getDaysInCurrentMonth() {
     let month = date[0];
     let year = date[1];
     let lastDayOfSelectedMonth = new Date(year, month, 0);
-    console.log(date);
-    console.log(month);
-    console.log(lastDayOfSelectedMonth);
     return lastDayOfSelectedMonth.getDate();
 }
 
@@ -73,7 +77,6 @@ function displayResults(daysWorked, overtimeHours, setcardValue, salaryPay) {
     Your setcard value should be ${setcardValue},<br>
     Your salary pay is ${salaryPay}.
     `;
-
 }
 
 function switchTabs(event) {
