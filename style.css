@@ -170,6 +170,10 @@ body {
     box-shadow: var(--outwards-box-shadow);
     z-index: 11;
 }
+.calculator-tab__label {
+
+    color: var(--dark-text);
+}
 .row {
 
 /*  flex-space-between */
