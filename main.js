@@ -53,6 +53,7 @@ function validateInputThenClaculate() {
             else if (digitRegex.test(input.value)) {
 
                 editLabelBack(labelsForAttribute)
+                return;
             }
             else {
 
