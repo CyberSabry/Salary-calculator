@@ -12,6 +12,15 @@
 </head>
 <body>
 
+    <div class="app-desktop-shortcut flex-column">
+        <svg class="app-desktop-shortcut__icon">
+            <use href="#calculator-app-icon"></use>
+        </svg>
+        <p class="app-desktop-shortcut__title">
+            Salary calculator
+        </p>
+    </div>
+
     <main class="salary-calculator">
 
         <!-- Top part with icon, Display name, and size controls -->
@@ -106,6 +115,7 @@
 
         <!-- Dialog box -->
         <section class="salary-calculator__dialog-box flex-end">
+            <button class="dialog-box__btns reset-btn">Reset</button>
             <button class="dialog-box__btns calculate-btn">Calculate</button>
         </section>
     </main>
@@ -131,7 +141,7 @@
 
         <!-- System tray that shows current time -->
         <section class="task-bar__system-tray-section flex">
-            <p class="system-tray-section__clock-face" id="clock-value">12</p>
+            <p class="system-tray-section__clock-face"></p>
         </section>
     </footer>
 
@@ -240,7 +250,7 @@
             <mask id="path-1-inside-1_55_12" fill="white">
             <path d="M0 0H16V16H0V0Z"/>
             </mask>
-            <path d="M0 0V-4H-2V0H0ZM16 0H18V-4H16V0ZM16 16V18H18V16H16ZM0 16H-2V18H0V16ZM0 4H16V-4H0V4ZM14 0V16H18V0H14ZM16 14H0V18H16V14ZM2 16V0H-2V16H2Z" fill="black" mask="url(#path-1-inside-1_55_12)"/>
+            <path d="M0 0V-4H-2V0H0ZM16 0H18V-4H16V0ZM16 16V18H18V16H16ZM0 16H-2V18H0V16ZM0 4H16V-4H0V4ZM14 0V16H18V0H14ZM16 14H0V18H16V14ZM2 16V0H-2V16H2Z" fill="hsla(0, 0%, 0%, 0.5)" mask="url(#path-1-inside-1_55_12)"/>
         </symbol>
     </svg>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">

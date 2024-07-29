@@ -69,6 +69,31 @@ body {
     background-color: var(--background);
 }
 
+.app-desktop-shortcut {
+
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    /*  flex-column */
+    gap: 1em;
+    color: var(--light-text);
+    text-decoration: underline;
+}
+.app-desktop-shortcut__icon {
+    
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+}
+.app-desktop-shortcut__title {
+    
+    cursor: pointer;
+}
+.app-desktop-shortcut:click {
+
+    background-color: red;
+}
+
 .salary-calculator {
 
     position: absolute;
@@ -227,6 +252,7 @@ body {
 .salary-calculator__dialog-box {
 
 /*  flex-end */
+    gap: 0.5em;
     width: 90%;
     margin-block: 0.5em;
     margin-inline: auto;
@@ -294,11 +320,11 @@ body {
     width: 100px;
     height: 50px;
     padding: 8px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     border: var(--border-width) var(--border-style);
     border-color: var(--inwards-border);
     box-shadow: var(--accent);
-    background-color: var(--light-text);
+    background-color: var(--main);
     color: var(--dark-text);
     cursor: pointer;
 }
@@ -315,7 +341,8 @@ body {
     height: 24px;
 }
 
-.action-btns__btn:active,
+.minimize:active,
+.close:active,
 .dialog-box__btns:active,
 .btns-section__btn:active {
     

@@ -1,20 +1,36 @@
-// Calculator tab inputs.
+// App desktop shortcut:
+const appDesktopShortcut = document.querySelector('.app-desktop-shortcut');
+// App window:
+const appWindow = document.querySelector('.salary-calculator');
+// Action buttons:
+const minimizeBtn = document.querySelector('.minimize');
+const closeBtn = document.querySelector('.close');
+// Calculator tab inputs:
 const dateInput = document.querySelector('#month-year');
 const salaryInput = document.querySelector('#salary');
 const daysAbsentInput = document.querySelector('#days-absent');
 const overtimeHoursInput = document.querySelector('#overtime-hours');
-const calculateButton = document.querySelector('.calculate-btn');
-// Configuration tab inputs.
+// Configuration tab inputs:
 const baseDaysInput = document.querySelector('#base-days');
 const baseHoursInput = document.querySelector('#base-hours');
 const overtimeRateInput = document.querySelector('#overtime-rate');
-// Tabs and their tab switching buttons.
+// Tabs and their tab switching buttons:
 const calculatorBtn = document.querySelector('.calculator-tab-btn');
 const configurationBtn = document.querySelector('.configuration-tab-btn');
 const calculatorTab = document.querySelector('.calculator-tab');
 const configurationTab = document.querySelector('.configuration-tab');
-// All the inputs.
+// All the inputs together:
 const allInputs = document.querySelectorAll('.calculator-tab__input-fields, .configuration-tab__input-fields');
+// Results box:
+const resultsBox = document.querySelector('.salary-calculator__results-box');
+// Dialog box buttons:
+const resetBtn = document.querySelector('.reset-btn');
+const calculateBtn = document.querySelector('.calculate-btn');
+// Taskbar buttons:
+const startBtn = document.querySelector('.start-btn');
+const appBtn = document.querySelector('.calculator-app-btn');
+// System tray stuff:
+const clockFace = document.querySelector('.system-tray-section__clock-face');
 
 function validateInputThenClaculate() {
 
@@ -29,7 +45,19 @@ function validateInputThenClaculate() {
 
         if (input.id === 'month-year') {
 
-            return;
+            if (input.value === '') {
+
+                editLabel(labelsForAttribute, `Text field is empty =>`);
+                allValid = false;
+            }
+            else if (digitRegex.test(input.value)) {
+
+                editLabelBack(labelsForAttribute)
+            }
+            else {
+
+                return;
+            }
         }
         if (input.value === '') {
 
@@ -97,24 +125,34 @@ function cleanAndConvert(input) {
 }
 
 function getDaysInSelectedMonth() {
-
+    
     let date = dateInput.value.split('/');
     let month = date[0];
     let year = date[1];
     let lastDayOfSelectedMonth = new Date(year, month, 0);
-
+    
     return lastDayOfSelectedMonth.getDate();
 }
 
 function displayResults(daysWorked, overtimeHours, salaryPay) {
-
-    const resultsBox = document.querySelector('.salary-calculator__results-box');
-
+    
     resultsBox.innerHTML = `
     You have worked ${daysWorked} days this month,<br>
     ${overtimeHours} overtime hours,<br>
     Your salary pay is ${salaryPay}.
     `;
+}
+
+function resetInputs() {
+
+    dateInput.value = '';
+    salaryInput.value = '';
+    daysAbsentInput.value = 0;
+    overtimeHoursInput.value = 0;
+    baseDaysInput.value = 30;
+    baseHoursInput.value = 225;
+    overtimeRateInput.value = 1.5;
+    resultsBox.innerHTML = '';
 }
 
 function switchTabs(event) {
@@ -154,18 +192,74 @@ function editLabelBack(labelForAttribute) {
 
     label.innerHTML = defaultLabels[dataValue];
     label.style.color = 'var(--dark-text)';
-    console.log('edit should be working')
+}
+
+function closeApp() {
+
+    appWindow.style.display = 'none';
+    appBtn.style.display = 'none';
+    appDesktopShortcut.addEventListener('dblclick', openApp);
+}
+
+function openApp() {
+
+    resetInputs()
+    appWindow.style.display = 'block';
+    appBtn.style.display = 'block';
+    appDesktopShortcut.removeEventListener('dblclick', openApp);
+}
+
+function minimizeApp() {
+
+    appWindow.style.display = 'none';
+    appBtn.style.borderColor = 'var(--outwards-border)';
+    appBtn.style.boxShadow = 'var(--outwards-box-shadow)';
+    appBtn.addEventListener('click', bringAppBack)
+}
+
+function bringAppBack() {
+
+    appWindow.style.display = 'block';
+    appBtn.style.borderColor = 'var(--inwards-border)';
+    appBtn.style.boxShadow = 'var(--inwards-box-shadow)';
+    appBtn.removeEventListener('click', bringAppBack);
+}
+
+function displayTime() {
+
+    let date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    let time = `${hours} : ${minutes} ${ampm}`;
+
+    console.log(time)
+    clockFace.innerHTML = time;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    calculateButton.onclick = validateInputThenClaculate;
+    closeBtn.onclick = closeApp;
+    minimizeBtn.onclick = minimizeApp;
+
+    resetBtn.onclick = resetInputs;
+    calculateBtn.onclick = validateInputThenClaculate;
 
     calculatorBtn.dataset.tab = '0';
     configurationBtn.dataset.tab = '1';
 
     calculatorBtn.onclick = switchTabs;
     configurationBtn.onclick = switchTabs;
+
+    setInterval(displayTime, 1000);
+
     // Selects all the text inside each input when it receives focus.
     allInputs.forEach( (input) => {
 
