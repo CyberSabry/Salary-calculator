@@ -1,5 +1,6 @@
 // App desktop shortcut:
 const appDesktopShortcut = document.querySelector('.app-desktop-shortcut');
+const appDesktopShortcutHighlightLayer = document.querySelector('.app-desktop-shortcut__highlight');
 // App window:
 const appWindow = document.querySelector('.salary-calculator');
 // Action buttons:
@@ -26,6 +27,9 @@ const resultsBox = document.querySelector('.salary-calculator__results-box');
 // Dialog box buttons:
 const resetBtn = document.querySelector('.reset-btn');
 const calculateBtn = document.querySelector('.calculate-btn');
+// Start menu:
+const startMenu = document.querySelector('.task-bar__start-menu');
+const startMenuBtns = document.querySelectorAll('.list__item');
 // Taskbar buttons:
 const startBtn = document.querySelector('.start-btn');
 const appBtn = document.querySelector('.calculator-app-btn');
@@ -144,7 +148,7 @@ function displayResults(daysWorked, overtimeHours, salaryPay) {
     `;
 }
 
-function resetInputs() {
+function resetApp() {
 
     dateInput.value = '';
     salaryInput.value = '';
@@ -154,13 +158,20 @@ function resetInputs() {
     baseHoursInput.value = 225;
     overtimeRateInput.value = 1.5;
     resultsBox.innerHTML = '';
+    
+    allInputs.forEach (input => {
+
+        const labelForAttribute = input.id;
+
+        editLabelBack(labelForAttribute);
+    })
 }
 
 function switchTabs(event) {
 
-    const clicked = event.target;
+    const target = event.target;
 
-    switch(clicked.dataset.tab) {
+    switch(target.dataset.tab) {
 
         case '0':
             calculatorBtn.style.zIndex = 12;
@@ -204,7 +215,7 @@ function closeApp() {
 
 function openApp() {
 
-    resetInputs()
+    resetApp()
     appWindow.style.display = 'block';
     appBtn.style.display = 'block';
     appDesktopShortcut.removeEventListener('dblclick', openApp);
@@ -226,6 +237,80 @@ function bringAppBack() {
     appBtn.removeEventListener('click', bringAppBack);
 }
 
+function displayStartMenu() {
+
+    startMenu.style.display = 'block';
+    startBtn.style.borderColor = 'var(--inwards-border)';
+    startBtn.style.boxShadow = 'var(--inwards-box-shadow)';
+    document.addEventListener('click', startMenuCloseHandler);
+}
+
+function startMenuCloseHandler(event) {
+
+    const target = event.target;
+
+    if (
+        !startMenu.contains(target) &&
+        !startBtn.contains(target)
+    ) {
+
+        startMenu.style.display = 'none';
+        startBtn.style.borderColor = 'var(--outwards-border)';
+        startBtn.style.boxShadow = 'var(--outwards-box-shadow)';
+        document.removeEventListener('click', startMenuCloseHandler);
+    }
+}
+function switchThemes(event) {
+
+    const rootVeriables = getComputedStyle(document.documentElement);
+    const background = rootVeriables.getPropertyValue('--background').trim();
+    const main = rootVeriables.getPropertyValue('--main').trim();
+    const accent = rootVeriables.getPropertyValue('--accent').trim();
+    const lightText = rootVeriables.getPropertyValue('--light-text').trim();
+    const darkText = rootVeriables.getPropertyValue('--dark-text').trim();
+    const lightBorder = rootVeriables.getPropertyValue('--light-border').trim();
+    const darkBorder = rootVeriables.getPropertyValue('--dark-border').trim();
+    const lightBoxShadow = rootVeriables.getPropertyValue('--light-box-shadow').trim();
+    const darkBoxShadow = rootVeriables.getPropertyValue('--dark-box-shadow').trim();
+
+
+    const original = [
+        /* background */ 'hsl(180, 100%, 25%)', 
+        /* main */ 'hsl(0, 0%, 78%)', 
+        /* accent */ 'hsl(243, 100%, 26%)', 
+        /* light-text */ 'hsl(0, 0%, 100%)', 
+        /* dark-text */ 'hsl(0, 0%, 0%)', 
+        /* light-border */ 'hsl(0, 0%, 87%)', 
+        /* dark-border */ 'hsl(0, 0%, 5%)', 
+        /* light-box-shadow */ 'hsl(0, 0%, 87%)', 
+        /* dark-box-shadow */ 'hsl(120, 0%, 52%)'
+    ];
+    const modernDark = [
+        'hsl(0, 0%, 0%)', 
+        'hsl(240, 15%, 9%)', 
+        'hsl(240, 6%, 30%)', 
+        'hsl(240, 15%, 9%)', 
+        'hsl(36, 77%, 47%)', 
+        'hsl(240, 6%, 30%)', 
+        'hsl(0, 0%, 0%)', 
+        'hsl(243, 18%, 20%)', 
+        'hsl(220, 16%, 4%)'
+    ];
+    // const violetDark = [];
+    // const ningaTurtles = [];
+    // const bee = [];
+
+    const themes = [original, modernDark/*, violetDark, ningaTurtles, bee*/];
+
+    const choiceNumber = event.target.dataset.tab;
+
+    switch (choiceNumber) {
+
+        case '0':
+
+    }
+}
+
 function displayTime() {
 
     let date = new Date();
@@ -241,16 +326,17 @@ function displayTime() {
 
     let time = `${hours} : ${minutes} ${ampm}`;
 
-    console.log(time)
     clockFace.innerHTML = time;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    startBtn.onclick = displayStartMenu;
+
     closeBtn.onclick = closeApp;
     minimizeBtn.onclick = minimizeApp;
 
-    resetBtn.onclick = resetInputs;
+    resetBtn.onclick = resetApp;
     calculateBtn.onclick = validateInputThenClaculate;
 
     calculatorBtn.dataset.tab = '0';
@@ -259,6 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     calculatorBtn.onclick = switchTabs;
     configurationBtn.onclick = switchTabs;
 
+    // For time display
     setInterval(displayTime, 1000);
 
     // Selects all the text inside each input when it receives focus.

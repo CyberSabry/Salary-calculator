@@ -14,7 +14,7 @@
     --dark-border: hsl(0, 0%, 5%);
     --light-box-shadow: hsl(0, 0%, 87%);
     --dark-box-shadow: hsl(120, 0%, 52%);
-
+    
     --border-width: 4px;
     --border-style: solid;
 
@@ -27,7 +27,7 @@
 
 /* Utility classes */
 .flex {
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,7 +75,8 @@ body {
     top: 30px;
     left: 20px;
     /*  flex-column */
-    gap: 1em;
+    gap: 0.5em;
+    padding: 8px;
     color: var(--light-text);
     text-decoration: underline;
 }
@@ -89,9 +90,10 @@ body {
     
     cursor: pointer;
 }
-.app-desktop-shortcut:click {
+.app-desktop-shortcut:active{
 
-    background-color: red;
+    opacity: 0.5;
+    background-color: var(--accent);
 }
 
 .salary-calculator {
@@ -276,6 +278,7 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
+    min-height: 70px;
     padding: 8px;
     background-color: var(--main);
     border: var(--border-width) var(--border-style);
@@ -283,20 +286,74 @@ body {
     box-shadow: var(--outwards-box-shadow);
 }
 
+.task-bar__start-menu {
+
+    display: none;
+    position: absolute;
+    bottom: 75px;
+    left: 5px;
+    padding: 8px;
+    border: var(--border-width) var(--border-style);
+    border-color: var(--outwards-border);
+    color: var(--dark-text);
+    font-size: 1.5rem;
+    background-color: var(--main);
+}
+.start-menu__list {
+
+/*  flex-column */
+    gap: 0.5em;
+    list-style: none;
+    padding: 0;
+}
+.list__item {
+
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    cursor: pointer;
+}
+.original:hover {
+
+    color: hsl(0, 0%, 100%);
+    background-color: var(--accent);
+}
+.modern-dark:hover {
+
+    color: hsl(0, 0%, 0%);
+    background-color: hsl(33, 80%, 51%);
+}
+.violet-dark:hover {
+
+    color: hsl(292, 40%, 63%);
+    background-color: hsl(295, 56%, 20%);
+}
+.ninja-turtles:hover {
+
+    color: hsl(0, 0%, 0%);
+    background-color: hsl(44, 81%, 61%);
+}
+.bee:hover {
+
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(190, 33%, 4%);
+}
+
 .task-bar__btns-section {
 
 /*  flex */
     gap: 1em;
+    height: 50px;
 }
 
 .btns-section__btn {
 
 /*  flex */
     gap: 0.4em;
+    height: 100%;
     padding: 8px;
     font-size: 1.3rem;
     border: var(--border-width) var(--border-style);
-
     background-color: var(--main);
     color: var(--dark-text);
     cursor: pointer;
