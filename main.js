@@ -35,6 +35,79 @@ const startBtn = document.querySelector('.start-btn');
 const appBtn = document.querySelector('.calculator-app-btn');
 // System tray stuff:
 const clockFace = document.querySelector('.system-tray-section__clock-face');
+// CSS variables:
+const CSSVariables = [
+    '--background',
+    '--main',
+    '--accent',
+    '--light-text',
+    '--dark-text',
+    '--light-border',
+    '--dark-border',
+    '--light-box-shadow',
+    '--dark-box-shadow'
+]
+// App color themes:
+const themes = {
+
+    original: {
+
+        background: 'hsl(180, 100%, 25%)',
+        main: 'hsl(0, 0%, 78%)', 
+        accent: 'hsl(243, 100%, 26%)', 
+        lightText: 'hsl(0, 0%, 100%)', 
+        darkText: 'hsl(0, 0%, 0%)', 
+        lightBorder: 'hsl(0, 0%, 87%)', 
+        darkBorder: 'hsl(0, 0%, 5%)', 
+        lightBoxShadow: 'hsl(0, 0%, 87%)', 
+        darkBoxShadow: 'hsl(120, 0%, 52%)'
+    },
+    modernDark: {
+
+        background: 'hsl(0, 0%, 0%)',
+        main: 'hsl(240, 15%, 9%)',
+        accent: 'hsl(240, 6%, 30%)',
+        lightText: 'hsl(240, 15%, 9%)',
+        darkText: 'hsl(36, 77%, 47%)',
+        lightBorder: 'hsl(240, 6%, 30%)',
+        darkBorder: 'hsl(0, 0%, 0%)',
+        lightBoxShadow: 'hsl(243, 18%, 20%)',
+        darkBoxShadow: 'hsl(220, 16%, 4%)'
+    },
+    violetDark: {
+        background: 'hsl(288, 64%, 15%)',
+        main: 'hsl(291, 51%, 26%)',
+        accent: 'hsl(242, 66%, 37%)',
+        lightText: 'hsl(0, 0%, 0%)',
+        darkText: 'hsl(283, 41%, 64%)',
+        lightBorder: 'hsl(292, 26%, 46%)',
+        darkBorder: 'hsl(0, 0%, 0%)',
+        lightBoxShadow: 'hsl(292, 40%, 63%)',
+        darkBoxShadow: 'hsl(292, 54%, 16%)'
+    },
+    ningaTurtles: {
+        background: 'hsl(132, 68%, 18%)',
+        main: 'hsl(106, 73%, 36%)',
+        accent: 'hsl(13, 83%, 50%)',
+        lightText: 'hsl(0, 0%, 100%)',
+        darkText: 'hsl(0, 0%, 0%)',
+        lightBorder: 'hsl(109, 60%, 45%)',
+        darkBorder: 'hsl(0, 0%, 0%)',
+        lightBoxShadow: 'hsl(112, 94%, 68%)',
+        darkBoxShadow: 'hsl(111, 80%, 24%)'
+    },
+    bee: {
+        background: 'hsl(50, 79%, 31%)',
+        main: 'hsl(52, 69%, 51%)',
+        accent: 'hsl(0, 0%, 0%)',
+        lightText: 'hsl(53, 78%, 70%)',
+        darkText: 'hsl(0, 0%, 0%)',
+        lightBorder: 'hsl(51, 68%, 55%)',
+        darkBorder: 'hsl(0, 0%, 0%)',
+        lightBoxShadow: 'hsl(53, 78%, 70%)',
+        darkBoxShadow: 'hsl(50, 79%, 27%)'
+    }
+};
 
 function validateInputThenClaculate() {
 
@@ -89,7 +162,7 @@ function validateInputThenClaculate() {
 
         calculate();
     }
-}
+};
 
 function calculate() {
 
@@ -109,17 +182,17 @@ function calculate() {
     const salaryPay = calculateSalary(salary, baseDays, daysWorked, overtimePay);
 
     displayResults(daysWorked, overtimeHours, salaryPay);
-}
+};
 
 function calculateOvertime(salary, baseHours, overtimeRate, overtimeHours) {
 
     return parseFloat(((salary / baseHours) * overtimeRate * overtimeHours).toFixed(2));
-}
+};
 
 function calculateSalary(salary, baseDays, daysWorked, overtimePay) {
 
     return parseFloat(((salary / baseDays) * daysWorked + overtimePay).toFixed(2));
-}
+};
 
 function cleanAndConvert(input) {
 
@@ -127,7 +200,7 @@ function cleanAndConvert(input) {
     let cleanInput = value.replace(/\D/g, '');
 
     return cleanInput;
-}
+};
 
 function getDaysInSelectedMonth() {
     
@@ -137,7 +210,7 @@ function getDaysInSelectedMonth() {
     let lastDayOfSelectedMonth = new Date(year, month, 0);
     
     return lastDayOfSelectedMonth.getDate();
-}
+};
 
 function displayResults(daysWorked, overtimeHours, salaryPay) {
     
@@ -146,7 +219,7 @@ function displayResults(daysWorked, overtimeHours, salaryPay) {
     ${overtimeHours} overtime hours,<br>
     Your salary pay is ${salaryPay}.
     `;
-}
+};
 
 function resetApp() {
 
@@ -165,7 +238,7 @@ function resetApp() {
 
         editLabelBack(labelForAttribute);
     })
-}
+};
 
 function switchTabs(event) {
 
@@ -186,7 +259,7 @@ function switchTabs(event) {
             configurationTab.style.display = 'block';
             break;
     }
-}
+};
 
 function editLabel(labelForAttribute, massage) {
 
@@ -194,7 +267,7 @@ function editLabel(labelForAttribute, massage) {
 
         label.innerHTML = massage;
         label.style.color = 'red';
-}
+};
 
 function editLabelBack(labelForAttribute) {
 
@@ -204,14 +277,14 @@ function editLabelBack(labelForAttribute) {
 
     label.innerHTML = defaultLabels[dataValue];
     label.style.color = 'var(--dark-text)';
-}
+};
 
 function closeApp() {
 
     appWindow.style.display = 'none';
     appBtn.style.display = 'none';
     appDesktopShortcut.addEventListener('dblclick', openApp);
-}
+};
 
 function openApp() {
 
@@ -219,7 +292,7 @@ function openApp() {
     appWindow.style.display = 'block';
     appBtn.style.display = 'block';
     appDesktopShortcut.removeEventListener('dblclick', openApp);
-}
+};
 
 function minimizeApp() {
 
@@ -227,7 +300,7 @@ function minimizeApp() {
     appBtn.style.borderColor = 'var(--outwards-border)';
     appBtn.style.boxShadow = 'var(--outwards-box-shadow)';
     appBtn.addEventListener('click', bringAppBack)
-}
+};
 
 function bringAppBack() {
 
@@ -235,7 +308,7 @@ function bringAppBack() {
     appBtn.style.borderColor = 'var(--inwards-border)';
     appBtn.style.boxShadow = 'var(--inwards-box-shadow)';
     appBtn.removeEventListener('click', bringAppBack);
-}
+};
 
 function displayStartMenu() {
 
@@ -243,7 +316,7 @@ function displayStartMenu() {
     startBtn.style.borderColor = 'var(--inwards-border)';
     startBtn.style.boxShadow = 'var(--inwards-box-shadow)';
     document.addEventListener('click', startMenuCloseHandler);
-}
+};
 
 function startMenuCloseHandler(event) {
 
@@ -259,57 +332,40 @@ function startMenuCloseHandler(event) {
         startBtn.style.boxShadow = 'var(--outwards-box-shadow)';
         document.removeEventListener('click', startMenuCloseHandler);
     }
-}
-function switchThemes(event) {
+};
+function selectTheme(event) {
 
-    const rootVeriables = getComputedStyle(document.documentElement);
-    const background = rootVeriables.getPropertyValue('--background').trim();
-    const main = rootVeriables.getPropertyValue('--main').trim();
-    const accent = rootVeriables.getPropertyValue('--accent').trim();
-    const lightText = rootVeriables.getPropertyValue('--light-text').trim();
-    const darkText = rootVeriables.getPropertyValue('--dark-text').trim();
-    const lightBorder = rootVeriables.getPropertyValue('--light-border').trim();
-    const darkBorder = rootVeriables.getPropertyValue('--dark-border').trim();
-    const lightBoxShadow = rootVeriables.getPropertyValue('--light-box-shadow').trim();
-    const darkBoxShadow = rootVeriables.getPropertyValue('--dark-box-shadow').trim();
-
-
-    const original = [
-        /* background */ 'hsl(180, 100%, 25%)', 
-        /* main */ 'hsl(0, 0%, 78%)', 
-        /* accent */ 'hsl(243, 100%, 26%)', 
-        /* light-text */ 'hsl(0, 0%, 100%)', 
-        /* dark-text */ 'hsl(0, 0%, 0%)', 
-        /* light-border */ 'hsl(0, 0%, 87%)', 
-        /* dark-border */ 'hsl(0, 0%, 5%)', 
-        /* light-box-shadow */ 'hsl(0, 0%, 87%)', 
-        /* dark-box-shadow */ 'hsl(120, 0%, 52%)'
-    ];
-    const modernDark = [
-        'hsl(0, 0%, 0%)', 
-        'hsl(240, 15%, 9%)', 
-        'hsl(240, 6%, 30%)', 
-        'hsl(240, 15%, 9%)', 
-        'hsl(36, 77%, 47%)', 
-        'hsl(240, 6%, 30%)', 
-        'hsl(0, 0%, 0%)', 
-        'hsl(243, 18%, 20%)', 
-        'hsl(220, 16%, 4%)'
-    ];
-    // const violetDark = [];
-    // const ningaTurtles = [];
-    // const bee = [];
-
-    const themes = [original, modernDark/*, violetDark, ningaTurtles, bee*/];
-
-    const choiceNumber = event.target.dataset.tab;
+    const choiceNumber = event.target.dataset.value;
 
     switch (choiceNumber) {
-
+        
         case '0':
-
+            setTheme(themes.original);
+            break;
+        case '1':
+            setTheme(themes.modernDark);
+            break;
+        case '2':
+            setTheme(themes.violetDark);
+            break;
+        case '3':
+            setTheme(themes.ningaTurtles);
+            break;
+        case '4':
+            setTheme(themes.bee);
+            break;
     }
-}
+};
+
+function setTheme(theme) {
+
+    const values = Object.values(theme);
+
+    for ( let i = 0; i < CSSVariables.length; i++ ) {
+
+        document.documentElement.style.setProperty(CSSVariables[i], values[i]);
+    }
+};
 
 function displayTime() {
 
@@ -327,10 +383,14 @@ function displayTime() {
     let time = `${hours} : ${minutes} ${ampm}`;
 
     clockFace.innerHTML = time;
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    startMenuBtns.forEach (button => {
+
+        button.onclick = selectTheme;
+    });
     startBtn.onclick = displayStartMenu;
 
     closeBtn.onclick = closeApp;
@@ -355,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             event.target.select();
         })
-    })
+    });
     // JavaScript library for date input UI.
     flatpickr("#month-year", {
     
@@ -367,4 +427,4 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         ],
     });
-})
+});

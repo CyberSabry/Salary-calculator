@@ -27,7 +27,7 @@
 
 /* Utility classes */
 .flex {
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,7 +77,7 @@ body {
     /*  flex-column */
     gap: 0.5em;
     padding: 8px;
-    color: var(--light-text);
+    color: var(--dark-text);
     text-decoration: underline;
 }
 .app-desktop-shortcut__icon {
@@ -164,10 +164,10 @@ body {
 .tabs-bar__btn {
 
     position: relative;
-    top: 6px;
+    top: 7px;
     padding: 8px 8px 16px 8px;
     font-size: 1.4rem;
-    border-width: calc(var(--border-width) * 1.5) var(--border-width) 0 calc(var(--border-width) * 1.5);
+    border-width: calc(var(--border-width) * 1.5) var(--border-width) 0 calc(var(--border-width) * 1.75);
     border-style: var(--border-style);
     border-color: var(--outwards-border);
     background-color: var(--main);
@@ -190,6 +190,7 @@ body {
     width: 90%;
     margin-block: 0 0;
     margin-inline: auto;
+    color: var(--dark-text);
     font-size: 1.2rem;
     padding: 20px;
     border: var(--border-width) var(--border-style);
@@ -224,6 +225,7 @@ body {
     height: 100%;
     padding: 5px;
     border: none;
+    background-color: hsl(0, 0%, 95%);
 }
 .configuration-tab {
 
@@ -246,9 +248,10 @@ body {
     margin-inline: auto;
     padding: 10px;
     line-height: 1.3em;
+    color: var(--dark-text);
     border: var(--border-width) var(--border-style);
     border-color: var(--inwards-border);
-    background-color: var(--light-text);
+    background-color: hsl(0, 0%, 95%);
 }
 
 .salary-calculator__dialog-box {
@@ -311,12 +314,13 @@ body {
     width: 100%;
     height: 100%;
     padding: 16px;
+    color: var(--dark-text);
     cursor: pointer;
 }
 .original:hover {
 
     color: hsl(0, 0%, 100%);
-    background-color: var(--accent);
+    background-color: hsl(243, 100%, 26%);
 }
 .modern-dark:hover {
 
