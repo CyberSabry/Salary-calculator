@@ -1,40 +1,59 @@
-// App desktop shortcut:
-const appDesktopShortcut = document.querySelector('.app-desktop-shortcut');
-const appDesktopShortcutHighlightLayer = document.querySelector('.app-desktop-shortcut__highlight');
-// App window:
-const appWindow = document.querySelector('.salary-calculator');
-// Action buttons:
-const minimizeBtn = document.querySelector('.minimize');
-const closeBtn = document.querySelector('.close');
 // Calculator tab inputs:
 const dateInput = document.querySelector('#month-year');
 const salaryInput = document.querySelector('#salary');
 const daysAbsentInput = document.querySelector('#days-absent');
 const overtimeHoursInput = document.querySelector('#overtime-hours');
+
 // Configuration tab inputs:
 const baseDaysInput = document.querySelector('#base-days');
 const baseHoursInput = document.querySelector('#base-hours');
 const overtimeRateInput = document.querySelector('#overtime-rate');
+
 // Tabs and their tab switching buttons:
 const calculatorBtn = document.querySelector('.calculator-tab-btn');
 const configurationBtn = document.querySelector('.configuration-tab-btn');
 const calculatorTab = document.querySelector('.calculator-tab');
 const configurationTab = document.querySelector('.configuration-tab');
+
 // All the inputs together:
 const allInputs = document.querySelectorAll('.calculator-tab__input-fields, .configuration-tab__input-fields');
+
 // Results box:
 const resultsBox = document.querySelector('.salary-calculator__results-box');
+
 // Dialog box buttons:
 const resetBtn = document.querySelector('.reset-btn');
 const calculateBtn = document.querySelector('.calculate-btn');
+
 // Start menu:
 const startMenu = document.querySelector('.task-bar__start-menu');
 const startMenuBtns = document.querySelectorAll('.list__item');
+
 // Taskbar buttons:
 const startBtn = document.querySelector('.start-btn');
 const appBtn = document.querySelector('.calculator-app-btn');
+
 // System tray stuff:
 const clockFace = document.querySelector('.system-tray-section__clock-face');
+
+// soon all elements will be stored here :)
+const Elements = {
+
+    desktopShortcuts: {
+
+        salaryCalculator: document.querySelector('.app-desktop-shortcut')
+    },
+    appWindow: {
+
+        salaryCalculator: document.querySelector('.salary-calculator')
+    },
+    actionButtons: {
+
+        minimize : document.querySelector('.minimize'),
+        close: document.querySelector('.close')
+    },
+}
+
 // CSS variables:
 const CSSVariables = [
     '--background',
@@ -47,8 +66,9 @@ const CSSVariables = [
     '--light-box-shadow',
     '--dark-box-shadow'
 ]
+
 // App color themes:
-const themes = {
+const Themes = {
 
     original: {
 
@@ -75,6 +95,7 @@ const themes = {
         darkBoxShadow: 'hsl(220, 16%, 4%)'
     },
     violetDark: {
+
         background: 'hsl(288, 64%, 15%)',
         main: 'hsl(291, 51%, 26%)',
         accent: 'hsl(242, 66%, 37%)',
@@ -86,6 +107,7 @@ const themes = {
         darkBoxShadow: 'hsl(292, 54%, 16%)'
     },
     ningaTurtles: {
+
         background: 'hsl(132, 68%, 18%)',
         main: 'hsl(106, 73%, 36%)',
         accent: 'hsl(13, 83%, 50%)',
@@ -97,6 +119,7 @@ const themes = {
         darkBoxShadow: 'hsl(111, 80%, 24%)'
     },
     bee: {
+
         background: 'hsl(50, 79%, 31%)',
         main: 'hsl(52, 69%, 51%)',
         accent: 'hsl(0, 0%, 0%)',
@@ -117,49 +140,26 @@ function validateInputThenClaculate() {
 
         const cleanInput = cleanAndConvert(input);
         const labelsForAttribute = input.id;
-        const regex = /\D/g;
-        const digitRegex = /\d/g;
 
-        if (input.id === 'month-year') {
-
-            if (input.value === '') {
-
-                editLabel(labelsForAttribute, `Text field is empty =>`);
-                allValid = false;
-            }
-            else if (digitRegex.test(input.value)) {
-
-                editLabelBack(labelsForAttribute)
-                return;
-            }
-            else {
-
-                return;
-            }
-        }
-        if (input.value === '') {
+        if ( input.value === '' ) {
 
             editLabel(labelsForAttribute, `Text field is empty =>`);
             allValid = false;
         }
-        else if (input.value < 0) {
-
-            editLabel(labelsForAttribute, `Can't have negative numbers =>`);
-            allValid = false;
-        }
-        else if (digitRegex.test(input.value)) {
-
-            input.value = cleanInput;
-            editLabelBack(labelsForAttribute)
-        }
-        else if (regex.test(input.value)) {
+        else if ( cleanInput === '' ) {
 
             editLabel(labelsForAttribute, `Make sure you're typing numbers =>`);
+            allValid = false;
+        }
+        else if ( input.value < 0 ) {
+
+            editLabel(labelsForAttribute, `Can't have negative numbers =>`);
             allValid = false;
         }
     })
     if (allValid) {
 
+        allInputs.forEach( input => editLabelBack(input.id))
         calculate();
     }
 };
@@ -197,14 +197,14 @@ function calculateSalary(salary, baseDays, daysWorked, overtimePay) {
 function cleanAndConvert(input) {
 
     let value = input.value;
-    let cleanInput = value.replace(/\D/g, '');
+    let cleanInput = value.replace(/[^0-9.]+/g, '');
 
     return cleanInput;
 };
 
 function getDaysInSelectedMonth() {
     
-    let date = dateInput.value.split('/');
+    let date = dateInput.value.split('.');
     let month = date[0];
     let year = date[1];
     let lastDayOfSelectedMonth = new Date(year, month, 0);
@@ -231,8 +231,7 @@ function resetApp() {
     baseHoursInput.value = 225;
     overtimeRateInput.value = 1.5;
     resultsBox.innerHTML = '';
-    
-    allInputs.forEach (input => {
+    allInputs.forEach(input => {
 
         const labelForAttribute = input.id;
 
@@ -265,8 +264,8 @@ function editLabel(labelForAttribute, massage) {
 
     const label = document.querySelector(`[for="${labelForAttribute}"]`);
 
-        label.innerHTML = massage;
-        label.style.color = 'red';
+    label.innerHTML = massage;
+    label.style.color = 'red';
 };
 
 function editLabelBack(labelForAttribute) {
@@ -281,22 +280,22 @@ function editLabelBack(labelForAttribute) {
 
 function closeApp() {
 
-    appWindow.style.display = 'none';
+    Elements.appWindow.salaryCalculator.style.display = 'none';
     appBtn.style.display = 'none';
-    appDesktopShortcut.addEventListener('dblclick', openApp);
+    Elements.desktopShortcuts.salaryCalculator.addEventListener('dblclick', openApp);
 };
 
 function openApp() {
 
     resetApp()
-    appWindow.style.display = 'block';
+    Elements.appWindow.salaryCalculator.style.display = 'block';
     appBtn.style.display = 'block';
-    appDesktopShortcut.removeEventListener('dblclick', openApp);
+    Elements.desktopShortcuts.salaryCalculator.removeEventListener('dblclick', openApp);
 };
 
 function minimizeApp() {
 
-    appWindow.style.display = 'none';
+    Elements.appWindow.salaryCalculator.style.display = 'none';
     appBtn.style.borderColor = 'var(--outwards-border)';
     appBtn.style.boxShadow = 'var(--outwards-box-shadow)';
     appBtn.addEventListener('click', bringAppBack)
@@ -304,7 +303,7 @@ function minimizeApp() {
 
 function bringAppBack() {
 
-    appWindow.style.display = 'block';
+    Elements.appWindow.salaryCalculator.style.display = 'block';
     appBtn.style.borderColor = 'var(--inwards-border)';
     appBtn.style.boxShadow = 'var(--inwards-box-shadow)';
     appBtn.removeEventListener('click', bringAppBack);
@@ -333,6 +332,7 @@ function startMenuCloseHandler(event) {
         document.removeEventListener('click', startMenuCloseHandler);
     }
 };
+
 function selectTheme(event) {
 
     const choiceNumber = event.target.dataset.value;
@@ -340,19 +340,19 @@ function selectTheme(event) {
     switch (choiceNumber) {
         
         case '0':
-            setTheme(themes.original);
+            setTheme(Themes.original);
             break;
         case '1':
-            setTheme(themes.modernDark);
+            setTheme(Themes.modernDark);
             break;
         case '2':
-            setTheme(themes.violetDark);
+            setTheme(Themes.violetDark);
             break;
         case '3':
-            setTheme(themes.ningaTurtles);
+            setTheme(Themes.ningaTurtles);
             break;
         case '4':
-            setTheme(themes.bee);
+            setTheme(Themes.bee);
             break;
     }
 };
@@ -376,7 +376,6 @@ function displayTime() {
 
     hours = hours % 12;
     hours = hours ? hours : 12;
-
     hours = hours < 10 ? '0' + hours : hours;
     minutes = minutes < 10 ? '0' + minutes : minutes;
 
@@ -392,22 +391,16 @@ document.addEventListener('DOMContentLoaded', () => {
         button.onclick = selectTheme;
     });
     startBtn.onclick = displayStartMenu;
-
-    closeBtn.onclick = closeApp;
-    minimizeBtn.onclick = minimizeApp;
-
+    Elements.actionButtons.close.onclick = closeApp;
+    Elements.actionButtons.minimize.onclick = minimizeApp;
     resetBtn.onclick = resetApp;
     calculateBtn.onclick = validateInputThenClaculate;
-
     calculatorBtn.dataset.tab = '0';
     configurationBtn.dataset.tab = '1';
-
     calculatorBtn.onclick = switchTabs;
     configurationBtn.onclick = switchTabs;
-
     // For time display
     setInterval(displayTime, 1000);
-
     // Selects all the text inside each input when it receives focus.
     allInputs.forEach( (input) => {
 
@@ -422,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         plugins: [
             new monthSelectPlugin({
                 shorthand: true,
-                dateFormat: "m/Y",
+                dateFormat: "m.Y",
                 altFormat: "F Y",
             })
         ],
