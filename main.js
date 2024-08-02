@@ -1,42 +1,3 @@
-// Calculator tab inputs:
-const dateInput = document.querySelector('#month-year');
-const salaryInput = document.querySelector('#salary');
-const daysAbsentInput = document.querySelector('#days-absent');
-const overtimeHoursInput = document.querySelector('#overtime-hours');
-
-// Configuration tab inputs:
-const baseDaysInput = document.querySelector('#base-days');
-const baseHoursInput = document.querySelector('#base-hours');
-const overtimeRateInput = document.querySelector('#overtime-rate');
-
-// Tabs and their tab switching buttons:
-const calculatorBtn = document.querySelector('.calculator-tab-btn');
-const configurationBtn = document.querySelector('.configuration-tab-btn');
-const calculatorTab = document.querySelector('.calculator-tab');
-const configurationTab = document.querySelector('.configuration-tab');
-
-// All the inputs together:
-const allInputs = document.querySelectorAll('.calculator-tab__input-fields, .configuration-tab__input-fields');
-
-// Results box:
-const resultsBox = document.querySelector('.salary-calculator__results-box');
-
-// Dialog box buttons:
-const resetBtn = document.querySelector('.reset-btn');
-const calculateBtn = document.querySelector('.calculate-btn');
-
-// Start menu:
-const startMenu = document.querySelector('.task-bar__start-menu');
-const startMenuBtns = document.querySelectorAll('.list__item');
-
-// Taskbar buttons:
-const startBtn = document.querySelector('.start-btn');
-const appBtn = document.querySelector('.calculator-app-btn');
-
-// System tray stuff:
-const clockFace = document.querySelector('.system-tray-section__clock-face');
-
-// soon all elements will be stored here :)
 const Elements = {
 
     desktopShortcuts: {
@@ -52,26 +13,59 @@ const Elements = {
         minimize : document.querySelector('.minimize'),
         close: document.querySelector('.close')
     },
+    tabSwitchButtons: {
+
+      calculator: document.querySelector('.calculator-tab-btn'),
+      configuration: document.querySelector('.configuration-tab-btn')
+    },
+    tabs: {
+
+        calculator: document.querySelector('.calculator-tab'),
+        configuration: document.querySelector('.configuration-tab')
+    },
+    calculatorTabInputs: {
+
+        date: document.querySelector('#month-year'),
+        salary: document.querySelector('#salary'),
+        daysAbsent: document.querySelector('#days-absent'),
+        overtime: document.querySelector('#overtime-hours')
+    },
+    configurationTabInputs: {
+
+        baseDays: document.querySelector('#base-days'),
+        baseHours: document.querySelector('#base-hours'),
+        overtimeRate: document.querySelector('#overtime-rate')
+    },
+    allInputs: document.querySelectorAll('.calculator-tab__input-fields, .configuration-tab__input-fields'),
+    resultsBox: {
+
+        box: document.querySelector('.salary-calculator__results-box')
+    },
+    dialogBoxButtons: {
+
+        calculate: document.querySelector('.calculate-btn'),
+        reset: document.querySelector('.reset-btn')
+    },
+    startMenu: {
+
+        body: document.querySelector('.task-bar__start-menu'),
+        buttons: document.querySelectorAll('.list__item')
+    },
+    taskbarButtons: {
+
+        start: document.querySelector('.start-btn'),
+        calculator: document.querySelector('.calculator-app-btn')
+    },
+    systemTray: {
+
+        clockFace: document.querySelector('.system-tray-section__clock-face')
+    }
 }
 
-// CSS variables:
-const CSSVariables = [
-    '--background',
-    '--main',
-    '--accent',
-    '--light-text',
-    '--dark-text',
-    '--light-border',
-    '--dark-border',
-    '--light-box-shadow',
-    '--dark-box-shadow'
-]
-
-// App color themes:
 const Themes = {
-
+    
     original: {
-
+        
         background: 'hsl(180, 100%, 25%)',
         main: 'hsl(0, 0%, 78%)', 
         accent: 'hsl(243, 100%, 26%)', 
@@ -83,7 +77,7 @@ const Themes = {
         darkBoxShadow: 'hsl(120, 0%, 52%)'
     },
     modernDark: {
-
+        
         background: 'hsl(0, 0%, 0%)',
         main: 'hsl(240, 15%, 9%)',
         accent: 'hsl(240, 6%, 30%)',
@@ -95,7 +89,7 @@ const Themes = {
         darkBoxShadow: 'hsl(220, 16%, 4%)'
     },
     violetDark: {
-
+        
         background: 'hsl(288, 64%, 15%)',
         main: 'hsl(291, 51%, 26%)',
         accent: 'hsl(242, 66%, 37%)',
@@ -107,7 +101,7 @@ const Themes = {
         darkBoxShadow: 'hsl(292, 54%, 16%)'
     },
     ningaTurtles: {
-
+        
         background: 'hsl(132, 68%, 18%)',
         main: 'hsl(106, 73%, 36%)',
         accent: 'hsl(13, 83%, 50%)',
@@ -119,7 +113,7 @@ const Themes = {
         darkBoxShadow: 'hsl(111, 80%, 24%)'
     },
     bee: {
-
+        
         background: 'hsl(50, 79%, 31%)',
         main: 'hsl(52, 69%, 51%)',
         accent: 'hsl(0, 0%, 0%)',
@@ -132,11 +126,23 @@ const Themes = {
     }
 };
 
+const CSSVariables = [
+    '--background',
+    '--main',
+    '--accent',
+    '--light-text',
+    '--dark-text',
+    '--light-border',
+    '--dark-border',
+    '--light-box-shadow',
+    '--dark-box-shadow'
+]
+
 function validateInputThenClaculate() {
-
+    
     let allValid = true;
-
-    allInputs.forEach (input => {
+    
+    Elements.allInputs.forEach (input => {
 
         const cleanInput = cleanAndConvert(input);
         const labelsForAttribute = input.id;
@@ -159,7 +165,7 @@ function validateInputThenClaculate() {
     })
     if (allValid) {
 
-        allInputs.forEach( input => editLabelBack(input.id))
+        Elements.allInputs.forEach( input => editLabelBack(input.id))
         calculate();
     }
 };
@@ -167,13 +173,13 @@ function validateInputThenClaculate() {
 function calculate() {
 
     // Calculator tab inputs.
-    const salary = salaryInput.value;
-    const daysAbsent = daysAbsentInput.value;
-    const overtimeHours = overtimeHoursInput.value;
+    const salary = Elements.calculatorTabInputs.salary.value;
+    const daysAbsent = Elements.calculatorTabInputs.overtime.value;
+    const overtimeHours = Elements.calculatorTabInputs.overtime.value;
     // Configuration tab inputs.
-    const baseDays = baseDaysInput.value;
-    const baseHours = baseHoursInput.value;
-    const overtimeRate = overtimeRateInput.value;
+    const baseDays = Elements.configurationTabInputs.baseDays.value;
+    const baseHours = Elements.configurationTabInputs.baseHours.value;
+    const overtimeRate = Elements.configurationTabInputs.overtimeRate.value;
 
     const daysInMonth = getDaysInSelectedMonth();
     const daysWorked = daysInMonth - daysAbsent;
@@ -204,7 +210,7 @@ function cleanAndConvert(input) {
 
 function getDaysInSelectedMonth() {
     
-    let date = dateInput.value.split('.');
+    let date = Elements.calculatorTabInputs.date.value.split('.');
     let month = date[0];
     let year = date[1];
     let lastDayOfSelectedMonth = new Date(year, month, 0);
@@ -214,7 +220,7 @@ function getDaysInSelectedMonth() {
 
 function displayResults(daysWorked, overtimeHours, salaryPay) {
     
-    resultsBox.innerHTML = `
+    Elements.resultsBox.box.innerHTML = `
     You have worked ${daysWorked} days this month,<br>
     ${overtimeHours} overtime hours,<br>
     Your salary pay is ${salaryPay}.
@@ -223,15 +229,15 @@ function displayResults(daysWorked, overtimeHours, salaryPay) {
 
 function resetApp() {
 
-    dateInput.value = '';
-    salaryInput.value = '';
-    daysAbsentInput.value = 0;
-    overtimeHoursInput.value = 0;
-    baseDaysInput.value = 30;
-    baseHoursInput.value = 225;
-    overtimeRateInput.value = 1.5;
-    resultsBox.innerHTML = '';
-    allInputs.forEach(input => {
+    Elements.calculatorTabInputs.date.value = '';
+    Elements.calculatorTabInputs.salary.value = '';
+    Elements.calculatorTabInputs.overtime.value = 0;
+    Elements.calculatorTabInputs.overtime.value = 0;
+    Elements.configurationTabInputs.baseDays.value = 30;
+    Elements.configurationTabInputs.baseHours.value = 225;
+    Elements.configurationTabInputs.overtimeRate.value = 1.5;
+    Elements.resultsBox.box.innerHTML = '';
+    Elements.allInputs.forEach(input => {
 
         const labelForAttribute = input.id;
 
@@ -243,19 +249,19 @@ function switchTabs(event) {
 
     const target = event.target;
 
-    switch(target.dataset.tab) {
+    switch(target.dataset.value) {
 
         case '0':
-            calculatorBtn.style.zIndex = 12;
-            calculatorTab.style.display = 'block';
-            configurationBtn.style.zIndex = 10;
-            configurationTab.style.display = 'none';
+            Elements.tabSwitchButtons.calculator.style.zIndex = 12;
+            Elements.tabs.calculator.style.display = 'block';
+            Elements.tabSwitchButtons.configuration.style.zIndex = 10;
+            Elements.tabs.configuration.style.display = 'none';
             break;
         case '1':
-            calculatorBtn.style.zIndex = 10;
-            calculatorTab.style.display = 'none';
-            configurationBtn.style.zIndex = 12;
-            configurationTab.style.display = 'block';
+            Elements.tabSwitchButtons.calculator.style.zIndex = 10;
+            Elements.tabs.calculator.style.display = 'none';
+            Elements.tabSwitchButtons.configuration.style.zIndex = 12;
+            Elements.tabs.configuration.style.display = 'block';
             break;
     }
 };
@@ -281,7 +287,7 @@ function editLabelBack(labelForAttribute) {
 function closeApp() {
 
     Elements.appWindow.salaryCalculator.style.display = 'none';
-    appBtn.style.display = 'none';
+    Elements.taskbarButtons.calculator.style.display = 'none';
     Elements.desktopShortcuts.salaryCalculator.addEventListener('dblclick', openApp);
 };
 
@@ -289,31 +295,31 @@ function openApp() {
 
     resetApp()
     Elements.appWindow.salaryCalculator.style.display = 'block';
-    appBtn.style.display = 'block';
+    Elements.taskbarButtons.calculator.style.display = 'block';
     Elements.desktopShortcuts.salaryCalculator.removeEventListener('dblclick', openApp);
 };
 
 function minimizeApp() {
 
     Elements.appWindow.salaryCalculator.style.display = 'none';
-    appBtn.style.borderColor = 'var(--outwards-border)';
-    appBtn.style.boxShadow = 'var(--outwards-box-shadow)';
-    appBtn.addEventListener('click', bringAppBack)
+    Elements.taskbarButtons.calculator.style.borderColor = 'var(--outwards-border)';
+    Elements.taskbarButtons.calculator.style.boxShadow = 'var(--outwards-box-shadow)';
+    Elements.taskbarButtons.calculator.addEventListener('click', bringAppBack)
 };
 
 function bringAppBack() {
 
     Elements.appWindow.salaryCalculator.style.display = 'block';
-    appBtn.style.borderColor = 'var(--inwards-border)';
-    appBtn.style.boxShadow = 'var(--inwards-box-shadow)';
-    appBtn.removeEventListener('click', bringAppBack);
+    Elements.taskbarButtons.calculator.style.borderColor = 'var(--inwards-border)';
+    Elements.taskbarButtons.calculator.style.boxShadow = 'var(--inwards-box-shadow)';
+    Elements.taskbarButtons.calculator.removeEventListener('click', bringAppBack);
 };
 
 function displayStartMenu() {
 
-    startMenu.style.display = 'block';
-    startBtn.style.borderColor = 'var(--inwards-border)';
-    startBtn.style.boxShadow = 'var(--inwards-box-shadow)';
+    Elements.startMenu.body.style.display = 'block';
+    Elements.taskbarButtons.start.style.borderColor = 'var(--inwards-border)';
+    Elements.taskbarButtons.start.style.boxShadow = 'var(--inwards-box-shadow)';
     document.addEventListener('click', startMenuCloseHandler);
 };
 
@@ -322,13 +328,13 @@ function startMenuCloseHandler(event) {
     const target = event.target;
 
     if (
-        !startMenu.contains(target) &&
-        !startBtn.contains(target)
+        !Elements.startMenu.body.contains(target) &&
+        !Elements.taskbarButtons.start.contains(target)
     ) {
 
-        startMenu.style.display = 'none';
-        startBtn.style.borderColor = 'var(--outwards-border)';
-        startBtn.style.boxShadow = 'var(--outwards-box-shadow)';
+        Elements.startMenu.body.style.display = 'none';
+        Elements.taskbarButtons.start.style.borderColor = 'var(--outwards-border)';
+        Elements.taskbarButtons.start.style.boxShadow = 'var(--outwards-box-shadow)';
         document.removeEventListener('click', startMenuCloseHandler);
     }
 };
@@ -381,28 +387,26 @@ function displayTime() {
 
     let time = `${hours} : ${minutes} ${ampm}`;
 
-    clockFace.innerHTML = time;
+    Elements.systemTray.clockFace.innerHTML = time;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    startMenuBtns.forEach (button => {
+    Elements.startMenu.buttons.forEach (button => {
 
         button.onclick = selectTheme;
     });
-    startBtn.onclick = displayStartMenu;
+    Elements.taskbarButtons.start.onclick = displayStartMenu;
     Elements.actionButtons.close.onclick = closeApp;
     Elements.actionButtons.minimize.onclick = minimizeApp;
-    resetBtn.onclick = resetApp;
-    calculateBtn.onclick = validateInputThenClaculate;
-    calculatorBtn.dataset.tab = '0';
-    configurationBtn.dataset.tab = '1';
-    calculatorBtn.onclick = switchTabs;
-    configurationBtn.onclick = switchTabs;
+    Elements.dialogBoxButtons.reset.onclick = resetApp;
+    Elements.dialogBoxButtons.calculate.onclick = validateInputThenClaculate;
+    Elements.tabSwitchButtons.calculator.onclick = switchTabs;
+    Elements.tabSwitchButtons.configuration.onclick = switchTabs;
     // For time display
     setInterval(displayTime, 1000);
     // Selects all the text inside each input when it receives focus.
-    allInputs.forEach( (input) => {
+    Elements.allInputs.forEach( (input) => {
 
         input.addEventListener('focus', (event) => {
 
