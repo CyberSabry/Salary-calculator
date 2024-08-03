@@ -14,6 +14,7 @@
     --dark-border: hsl(0, 0%, 5%);
     --light-box-shadow: hsl(0, 0%, 87%);
     --dark-box-shadow: hsl(120, 0%, 52%);
+    --input-background: hsl(0, 0%, 95%);
     
     --border-width: 4px;
     --border-style: solid;
@@ -23,39 +24,6 @@
 
     --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
     --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
-}
-
-/* Utility classes */
-.flex {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.flex-column {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.flex-space-between {
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.flex-start {
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.flex-end {
-
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
 }
 
 * {
@@ -69,16 +37,26 @@ body {
     background-color: var(--background);
 }
 
+
+
 .app-desktop-shortcut {
 
     position: absolute;
     top: 30px;
     left: 20px;
-    /*  flex-column */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     gap: 0.5em;
     padding: 8px;
-    color: var(--dark-text);
     text-decoration: underline;
+    color: hsl(0, 0%, 100%);
+}
+.app-desktop-shortcut:active{
+
+    opacity: 0.5;
+    background-color: var(--accent);
 }
 .app-desktop-shortcut__icon {
     
@@ -90,11 +68,8 @@ body {
     
     cursor: pointer;
 }
-.app-desktop-shortcut:active{
 
-    opacity: 0.5;
-    background-color: var(--accent);
-}
+
 
 .salary-calculator {
 
@@ -108,20 +83,31 @@ body {
     border-color: var(--outwards-border);
     box-shadow: var(--outwards-box-shadow);
 }
+
+
+
 .salary-calculator__title-bar {
 
-/*  flex-space-between */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 5em;
     width: 100%;
     padding: 8px;
     background-color: var(--accent);
 }
-
 .title-bar__header {
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 1em;
 }
+.header__icon {
 
+    width: 48px;
+    height: 48px;
+}
 .header__title {
 
     font-size: 2rem;
@@ -129,13 +115,16 @@ body {
     color: var(--light-text);
 }
 
-.title-bar__action-btns {
 
-/*  flex */
+
+.title-bar__action-buttons {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 0.1em;
 }
-
-.action-btns__btn {
+.action-buttons__button {
 
     width: 48px;
     height: 48px;
@@ -147,70 +136,92 @@ body {
     color: var(--dark-text);
     cursor: pointer;
 }
-.btn__icon {
+.action-buttons__button--minimize:active,
+.action-buttons__button--close:active {
 
-    width: 100%;
-    height: 100%;
+    border-color: var(--inwards-border);
+    box-shadow: var(--inwards-box-shadow);
+}
+.button__icon {
+
+    width: 24px;
+    height: 24px;
 }
 
-.salary-calculator__tabs-bar {
+
+
+.salary-calculator__tabs {
 
     position: relative;
-/*  flex-start */
     width: 90%;
-    margin-block: 0.5em 0;
+    margin-top: 1em;
     margin-inline: auto;
+    font-size: 1.2rem;
+    color: var(--dark-text);
 }
-.tabs-bar__btn {
+.tabs__tabs-switcher {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.tabs-switcher__button {
 
     position: relative;
-    top: 7px;
-    padding: 8px 8px 16px 8px;
+    top: 4px;
+    padding-block: 12px 16px;
+    padding-inline: 12px;
     font-size: 1.4rem;
-    border-width: calc(var(--border-width) * 1.5) var(--border-width) 0 calc(var(--border-width) * 1.75);
+    color: var(--dark-text);
+    border-width: calc(var(--border-width) * 1.5) var(--border-width) 0 calc(var(--border-width));
     border-style: var(--border-style);
     border-color: var(--outwards-border);
     background-color: var(--main);
-    color: var(--dark-text);
     cursor: pointer;
     z-index: 10;
 }
-.calculator-tab-btn {
+.tabs-switcher__button--calculator {
 
     z-index: 12;
 }
-.configuration-tab-btn {
+.tabs-switcher__button--configuration {
+
     z-index: 10;
 }
 
-.calculator-tab,
-.configuration-tab {
+
+
+.tabs__tab {
 
     position: relative;
-    width: 90%;
-    margin-block: 0 0;
-    margin-inline: auto;
-    color: var(--dark-text);
-    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
     padding: 20px;
     border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
-    box-shadow: var(--outwards-box-shadow);
     z-index: 11;
 }
-.calculator-tab__label {
+.tabs__tab--hidden {
+
+    display: none;
+}
+.tab__container {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.tab__label {
 
     color: var(--dark-text);
 }
-.row {
-
-/*  flex-space-between */
-    width: 100%;
-    gap: 0.5em;
-    margin-block: 0.5em;
-}
-.calculator-tab__input-container,
-.configuration-tab__input-container {
+.tab__input-container {
 
     width: 20%;
     min-width: 25px;
@@ -218,27 +229,26 @@ body {
     border: var(--border-width) var(--border-style);
     border-color: var(--inwards-border);
 }
-.calculator-tab__input-fields,
-.configuration-tab__input-fields {
+.tab__input-field {
 
     width: 100%;
     height: 100%;
     padding: 5px;
     border: none;
-    background-color: hsl(0, 0%, 95%);
-}
-.configuration-tab {
-
-    display: none;
+    background-color: var(--input-background);
 }
 
-.divider-line {
+
+
+.salary-calculator__divider-line {
 
     width: 90%;
     height: 4px;
     margin-block: 1em;
     margin-inline: auto;
 }
+
+
 
 .salary-calculator__results-box {
 
@@ -251,47 +261,58 @@ body {
     color: var(--dark-text);
     border: var(--border-width) var(--border-style);
     border-color: var(--inwards-border);
-    background-color: hsl(0, 0%, 95%);
+    background-color: var(--input-background);
 }
+
+
 
 .salary-calculator__dialog-box {
 
-/*  flex-end */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     gap: 0.5em;
     width: 90%;
-    margin-block: 0.5em;
+    margin-block: 0 1em;
     margin-inline: auto;
 }
-.dialog-box__btns {
+.dialog-box__button {
 
     padding: 8px;
     font-size: 1rem;
+    color: var(--dark-text);
     border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
     box-shadow: var(--outwards-box-shadow);
     background-color: var(--main);
-    color: var(--dark-text);
     cursor: pointer;
 }
+.dialog-box__button:active {
+
+    border-color: var(--inwards-border);
+    box-shadow: var(--inwards-box-shadow);
+}
+
+
 
 .task-bar {
 
-/*  flex-space-between */
     position: absolute;
     left: 0;
     bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     min-height: 70px;
     padding: 8px;
-    background-color: var(--main);
     border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
     box-shadow: var(--outwards-box-shadow);
+    background-color: var(--main);
 }
-
 .task-bar__start-menu {
 
-    display: none;
     position: absolute;
     bottom: 75px;
     left: 5px;
@@ -302,12 +323,19 @@ body {
     font-size: 1.5rem;
     background-color: var(--main);
 }
+.task-bar__start-menu--hidden {
+
+    display: none;
+}
 .start-menu__list {
 
-/*  flex-column */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     gap: 0.5em;
-    list-style: none;
     padding: 0;
+    list-style: none;
 }
 .list__item {
 
@@ -317,96 +345,91 @@ body {
     color: var(--dark-text);
     cursor: pointer;
 }
-.original:hover {
+.list__item--original:hover {
 
     color: hsl(0, 0%, 100%);
     background-color: hsl(243, 100%, 26%);
 }
-.modern-dark:hover {
+.list__item--modern-dark:hover {
 
     color: hsl(0, 0%, 0%);
     background-color: hsl(33, 80%, 51%);
 }
-.violet-dark:hover {
+.list__item--violet-dark:hover {
 
     color: hsl(292, 40%, 63%);
     background-color: hsl(295, 56%, 20%);
 }
-.ninja-turtles:hover {
+.list__item--ninja-turtles:hover {
 
     color: hsl(0, 0%, 0%);
     background-color: hsl(44, 81%, 61%);
 }
-.bee:hover {
+.list__item--bee:hover {
 
     color: hsl(0, 0%, 100%);
     background-color: hsl(190, 33%, 4%);
 }
 
-.task-bar__btns-section {
 
-/*  flex */
+
+.task-bar__app-buttons-section {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 1em;
     height: 50px;
 }
+.app-buttons-section__app-button {
 
-.btns-section__btn {
-
-/*  flex */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 0.4em;
     height: 100%;
-    padding: 8px;
+    padding: 12px;
     font-size: 1.3rem;
+    color: var(--dark-text);
     border: var(--border-width) var(--border-style);
     background-color: var(--main);
-    color: var(--dark-text);
     cursor: pointer;
 }
+.app-buttons-section__app-button:active {
 
-.start-btn {
+    border-color: var(--inwards-border);
+    box-shadow: var(--inwards-box-shadow);
+}
+.app-button__icon {
+
+    width: 32px;
+    height: 32px;
+}
+.app-buttons-section__app-button--start {
 
     border-color: var(--outwards-border);
     box-shadow: var(--outwards-box-shadow);
 }
-
-.calculator-app-btn {
+.app-buttons-section__app-button--calculator {
 
     border-color: var(--inwards-border);
     box-shadow: var(--inwards-box-shadow);
 }
 
+
+
 .task-bar__system-tray-section {
 
-/*  flex */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100px;
     height: 50px;
     padding: 8px;
     font-size: 1rem;
+    color: var(--dark-text);
     border: var(--border-width) var(--border-style);
     border-color: var(--inwards-border);
     box-shadow: var(--accent);
     background-color: var(--main);
-    color: var(--dark-text);
-    cursor: pointer;
-}
-
-.header__icon {
-
-    width: 48px;
-    height: 48px;
-}
-.start-btn__icon,
-.calculator-app__icon {
-
-    width: 24px;
-    height: 24px;
-}
-
-.minimize:active,
-.close:active,
-.dialog-box__btns:active,
-.btns-section__btn:active {
-    
-    border-color: var(--inwards-border);
-    box-shadow: var(--inwards-box-shadow);
 }

@@ -10,18 +10,18 @@ const Elements = {
     },
     actionButtons: {
 
-        minimize : document.querySelector('.minimize'),
-        close: document.querySelector('.close')
+        minimize : document.querySelector('.action-buttons__button--minimize'),
+        close: document.querySelector('.action-buttons__button--close')
     },
     tabSwitchButtons: {
 
-      calculator: document.querySelector('.calculator-tab-btn'),
-      configuration: document.querySelector('.configuration-tab-btn')
+      calculator: document.querySelector('.tabs-switcher__button--calculator'),
+      configuration: document.querySelector('.tabs-switcher__button--configuration')
     },
     tabs: {
 
-        calculator: document.querySelector('.calculator-tab'),
-        configuration: document.querySelector('.configuration-tab')
+        calculator: document.querySelector('#calculator-tab'),
+        configuration: document.querySelector('#configuration-tab')
     },
     calculatorTabInputs: {
 
@@ -36,15 +36,15 @@ const Elements = {
         baseHours: document.querySelector('#base-hours'),
         overtimeRate: document.querySelector('#overtime-rate')
     },
-    allInputs: document.querySelectorAll('.calculator-tab__input-fields, .configuration-tab__input-fields'),
+    allInputs: document.querySelectorAll('.tab__input-field'),
     resultsBox: {
 
         box: document.querySelector('.salary-calculator__results-box')
     },
     dialogBoxButtons: {
 
-        calculate: document.querySelector('.calculate-btn'),
-        reset: document.querySelector('.reset-btn')
+        reset: document.querySelector('.dialog-box__button--reset'),
+        calculate: document.querySelector('.dialog-box__button--calculate')
     },
     startMenu: {
 
@@ -53,8 +53,8 @@ const Elements = {
     },
     taskbarButtons: {
 
-        start: document.querySelector('.start-btn'),
-        calculator: document.querySelector('.calculator-app-btn')
+        start: document.querySelector('.app-buttons-section__app-button--start'),
+        calculator: document.querySelector('.app-buttons-section__app-button--calculator')
     },
     systemTray: {
 
@@ -253,7 +253,7 @@ function switchTabs(event) {
 
         case '0':
             Elements.tabSwitchButtons.calculator.style.zIndex = 12;
-            Elements.tabs.calculator.style.display = 'block';
+            Elements.tabs.calculator.style.display = 'flex';
             Elements.tabSwitchButtons.configuration.style.zIndex = 10;
             Elements.tabs.configuration.style.display = 'none';
             break;
@@ -261,7 +261,7 @@ function switchTabs(event) {
             Elements.tabSwitchButtons.calculator.style.zIndex = 10;
             Elements.tabs.calculator.style.display = 'none';
             Elements.tabSwitchButtons.configuration.style.zIndex = 12;
-            Elements.tabs.configuration.style.display = 'block';
+            Elements.tabs.configuration.style.display = 'flex';
             break;
     }
 };
@@ -295,7 +295,7 @@ function openApp() {
 
     resetApp()
     Elements.appWindow.salaryCalculator.style.display = 'block';
-    Elements.taskbarButtons.calculator.style.display = 'block';
+    Elements.taskbarButtons.calculator.style.display = 'flex';
     Elements.desktopShortcuts.salaryCalculator.removeEventListener('dblclick', openApp);
 };
 
@@ -317,7 +317,7 @@ function bringAppBack() {
 
 function displayStartMenu() {
 
-    Elements.startMenu.body.style.display = 'block';
+    Elements.startMenu.body.style.display = 'flex';
     Elements.taskbarButtons.start.style.borderColor = 'var(--inwards-border)';
     Elements.taskbarButtons.start.style.boxShadow = 'var(--inwards-box-shadow)';
     document.addEventListener('click', startMenuCloseHandler);
