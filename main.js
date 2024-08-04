@@ -74,7 +74,22 @@ const Themes = {
         lightBorder: 'hsl(0, 0%, 87%)', 
         darkBorder: 'hsl(0, 0%, 5%)', 
         lightBoxShadow: 'hsl(0, 0%, 87%)', 
-        darkBoxShadow: 'hsl(120, 0%, 52%)'
+        darkBoxShadow: 'hsl(120, 0%, 52%)',
+        inputBackground: 'hsl(0, 0%, 95%)',
+
+        windowsLogoTopLeft: 'hsl(0, 100%, 50%)',
+        windowsLogoTopRight: 'hsl(120, 100%, 50%)',
+        windowsLogoBottomLeft: 'hsl(240, 100%, 50%)',
+        windowsLogoBottomRight: 'hsl(60, 100%, 50%)',
+
+        appLogoScreenColor: 'hsl(180, 100%, 25%)',
+        appLogoLightMainParts: 'hsl(0, 0%, 76%)',
+        appLogoDarkMainParts: 'hsl(0, 0%, 51%)',
+        appLogoAccentParts: 'hsl(247, 100%, 25%)',
+        appLogoLightParts: 'hsl(0, 0%, 100%)',
+        appLogoDarkParts: 'hsl(0, 0%, 0%)',
+        appLogoTextColor: 'hsl(0, 0%, 100%)',
+        appLogoInputBackground: 'hsl(0, 0%, 100%)'
     },
     modernDark: {
         
@@ -86,19 +101,49 @@ const Themes = {
         lightBorder: 'hsl(240, 6%, 30%)',
         darkBorder: 'hsl(0, 0%, 0%)',
         lightBoxShadow: 'hsl(243, 18%, 20%)',
-        darkBoxShadow: 'hsl(220, 16%, 4%)'
+        darkBoxShadow: 'hsl(220, 16%, 4%)',
+        inputBackground: 'hsl(240, 5%, 20%)',
+
+        windowsLogoTopLeft: 'hsl(36, 77%, 47%)',
+        windowsLogoTopRight: 'hsl(240, 6%, 30%)',
+        windowsLogoBottomLeft: 'hsl(240, 6%, 30%)',
+        windowsLogoBottomRight: 'hsl(36, 77%, 47%)',
+
+        appLogoScreenColor: 'hsl(0, 0%, 0%)',
+        appLogoLightMainParts: 'hsl(220, 16%, 24%)',
+        appLogoDarkMainParts: 'hsl(240, 15%, 19%)',
+        appLogoAccentParts: 'hsl(240, 6%, 30%)',
+        appLogoLightParts: 'hsl(240, 6%, 30%)',
+        appLogoDarkParts: 'hsl(240, 15%, 9%)',
+        appLogoTextColor: 'hsl(36, 77%, 47%)',
+        appLogoInputBackground: 'hsl(240, 5%, 20%)'
     },
     violetDark: {
         
         background: 'hsl(288, 64%, 15%)',
         main: 'hsl(291, 51%, 26%)',
         accent: 'hsl(242, 66%, 37%)',
-        lightText: 'hsl(0, 0%, 0%)',
+        lightText: 'hsl(0, 0%, 100%)',
         darkText: 'hsl(283, 41%, 64%)',
         lightBorder: 'hsl(292, 26%, 46%)',
         darkBorder: 'hsl(0, 0%, 0%)',
         lightBoxShadow: 'hsl(292, 40%, 63%)',
-        darkBoxShadow: 'hsl(292, 54%, 16%)'
+        darkBoxShadow: 'hsl(292, 54%, 16%)',
+        inputBackground: 'hsl(292, 54%, 20%)',
+
+        windowsLogoTopLeft: 'hsl(283, 41%, 64%)',
+        windowsLogoTopRight: 'hsl(309, 65%, 54%)',
+        windowsLogoBottomLeft: 'hsl(309, 65%, 54%)',
+        windowsLogoBottomRight: 'hsl(283, 41%, 64%)',
+
+        appLogoScreenColor: 'hsl(291, 51%, 26%)',
+        appLogoLightMainParts: 'hsl(292, 26%, 46%)',
+        appLogoDarkMainParts: 'hsl(292, 54%, 16%)',
+        appLogoAccentParts: 'hsl(242, 66%, 37%)',
+        appLogoLightParts: 'hsl(292, 40%, 63%)',
+        appLogoDarkParts: 'hsl(0, 0%, 0%)',
+        appLogoTextColor: 'hsl(283, 41%, 64%)',
+        appLogoInputBackground: 'hsl(292, 54%, 30%)'
     },
     ningaTurtles: {
         
@@ -110,7 +155,22 @@ const Themes = {
         lightBorder: 'hsl(109, 60%, 45%)',
         darkBorder: 'hsl(0, 0%, 0%)',
         lightBoxShadow: 'hsl(112, 94%, 68%)',
-        darkBoxShadow: 'hsl(111, 80%, 24%)'
+        darkBoxShadow: 'hsl(111, 80%, 24%)',
+        inputBackground: 'hsl(106, 68%, 72%)',
+
+        windowsLogoTopLeft: 'hsl(112, 94%, 68%)',
+        windowsLogoTopRight: 'hsl(13, 83%, 50%)',
+        windowsLogoBottomLeft: 'hsl(13, 83%, 50%)',
+        windowsLogoBottomRight: 'hsl(112, 94%, 68%)',
+
+        appLogoScreenColor: 'hsl(132, 68%, 18%)',
+        appLogoLightMainParts: 'hsl(109, 60%, 45%)',
+        appLogoDarkMainParts: 'hsl(111, 80%, 24%)',
+        appLogoAccentParts: 'hsl(13, 83%, 50%)',
+        appLogoLightParts: 'hsl(112, 94%, 68%)',
+        appLogoDarkParts: 'hsl(0, 0%, 0%)',
+        appLogoTextColor: 'hsl(106, 68%, 72%)',
+        appLogoInputBackground: 'hsl(106, 68%, 72%)'
     },
     bee: {
         
@@ -122,7 +182,22 @@ const Themes = {
         lightBorder: 'hsl(51, 68%, 55%)',
         darkBorder: 'hsl(0, 0%, 0%)',
         lightBoxShadow: 'hsl(53, 78%, 70%)',
-        darkBoxShadow: 'hsl(50, 79%, 27%)'
+        darkBoxShadow: 'hsl(50, 80%, 17%)',
+        inputBackground: 'hsl(52, 79%, 72%)',
+
+        windowsLogoTopLeft: 'hsl(52, 69%, 51%)',
+        windowsLogoTopRight: 'hsl(52, 79%, 72%)',
+        windowsLogoBottomLeft: 'hsl(52, 79%, 72%)',
+        windowsLogoBottomRight: 'hsl(52, 69%, 51%)',
+
+        appLogoScreenColor: 'hsl(50, 79%, 31%)',
+        appLogoLightMainParts: 'hsl(53, 78%, 70%)',
+        appLogoDarkMainParts: 'hsl(50, 80%, 20%)',
+        appLogoAccentParts: 'hsl(0, 0%, 0%)',
+        appLogoLightParts: 'hsl(53, 78%, 70%)',
+        appLogoDarkParts: 'hsl(0, 0%, 0%)',
+        appLogoTextColor: 'hsl(0, 0%, 0%)',
+        appLogoInputBackground: 'hsl(52, 79%, 72%)'
     }
 };
 
@@ -135,7 +210,20 @@ const CSSVariables = [
     '--light-border',
     '--dark-border',
     '--light-box-shadow',
-    '--dark-box-shadow'
+    '--dark-box-shadow',
+    '--input-background',
+    '--windows-logo-top-left',
+    '--windows-logo-top-right',
+    '--windows-logo-bottom-left',
+    '--windows-logo-bottom-right',
+    '--app-logo-screen-color',
+    '--app-logo-light-main-parts',
+    '--app-logo-dark-main-parts',
+    '--app-logo-accent-parts',
+    '--app-logo-light-parts',
+    '--app-logo-dark-parts',
+    '--app-logo-text-color',
+    '--app-logo-input-background'
 ]
 
 function validateInputThenClaculate() {
@@ -174,7 +262,7 @@ function calculate() {
 
     // Calculator tab inputs.
     const salary = Elements.calculatorTabInputs.salary.value;
-    const daysAbsent = Elements.calculatorTabInputs.overtime.value;
+    const daysAbsent = Elements.calculatorTabInputs.daysAbsent.value;
     const overtimeHours = Elements.calculatorTabInputs.overtime.value;
     // Configuration tab inputs.
     const baseDays = Elements.configurationTabInputs.baseDays.value;
@@ -253,15 +341,15 @@ function switchTabs(event) {
 
         case '0':
             Elements.tabSwitchButtons.calculator.style.zIndex = 12;
-            Elements.tabs.calculator.style.display = 'flex';
+            showElement(Elements.tabs.calculator);
             Elements.tabSwitchButtons.configuration.style.zIndex = 10;
-            Elements.tabs.configuration.style.display = 'none';
+            hideElement(Elements.tabs.configuration);
             break;
         case '1':
             Elements.tabSwitchButtons.calculator.style.zIndex = 10;
-            Elements.tabs.calculator.style.display = 'none';
+            hideElement(Elements.tabs.calculator);
             Elements.tabSwitchButtons.configuration.style.zIndex = 12;
-            Elements.tabs.configuration.style.display = 'flex';
+            showElement(Elements.tabs.configuration);
             break;
     }
 };
@@ -286,22 +374,22 @@ function editLabelBack(labelForAttribute) {
 
 function closeApp() {
 
-    Elements.appWindow.salaryCalculator.style.display = 'none';
-    Elements.taskbarButtons.calculator.style.display = 'none';
+    hideElement(Elements.appWindow.salaryCalculator);
+    hideElement(Elements.taskbarButtons.calculator);
     Elements.desktopShortcuts.salaryCalculator.addEventListener('dblclick', openApp);
 };
 
 function openApp() {
 
     resetApp()
-    Elements.appWindow.salaryCalculator.style.display = 'block';
-    Elements.taskbarButtons.calculator.style.display = 'flex';
+    showElement(Elements.appWindow.salaryCalculator);
+    showElement(Elements.taskbarButtons.calculator);
     Elements.desktopShortcuts.salaryCalculator.removeEventListener('dblclick', openApp);
 };
 
 function minimizeApp() {
 
-    Elements.appWindow.salaryCalculator.style.display = 'none';
+    hideElement(Elements.appWindow.salaryCalculator);
     Elements.taskbarButtons.calculator.style.borderColor = 'var(--outwards-border)';
     Elements.taskbarButtons.calculator.style.boxShadow = 'var(--outwards-box-shadow)';
     Elements.taskbarButtons.calculator.addEventListener('click', bringAppBack)
@@ -309,7 +397,7 @@ function minimizeApp() {
 
 function bringAppBack() {
 
-    Elements.appWindow.salaryCalculator.style.display = 'block';
+    showElement(Elements.appWindow.salaryCalculator);
     Elements.taskbarButtons.calculator.style.borderColor = 'var(--inwards-border)';
     Elements.taskbarButtons.calculator.style.boxShadow = 'var(--inwards-box-shadow)';
     Elements.taskbarButtons.calculator.removeEventListener('click', bringAppBack);
@@ -317,11 +405,25 @@ function bringAppBack() {
 
 function displayStartMenu() {
 
-    Elements.startMenu.body.style.display = 'flex';
+    showElement(Elements.startMenu.body)
     Elements.taskbarButtons.start.style.borderColor = 'var(--inwards-border)';
     Elements.taskbarButtons.start.style.boxShadow = 'var(--inwards-box-shadow)';
     document.addEventListener('click', startMenuCloseHandler);
 };
+
+function showElement(element) {
+
+    const hiddenClass = element.classList[0] + '--hidden';
+
+    element.classList.remove(hiddenClass);
+}
+
+function hideElement(element) {
+
+    const hiddenClass = element.classList[0] + '--hidden';
+
+    element.classList.add(hiddenClass);
+}
 
 function startMenuCloseHandler(event) {
 
@@ -332,7 +434,7 @@ function startMenuCloseHandler(event) {
         !Elements.taskbarButtons.start.contains(target)
     ) {
 
-        Elements.startMenu.body.style.display = 'none';
+        hideElement(Elements.startMenu.body);
         Elements.taskbarButtons.start.style.borderColor = 'var(--outwards-border)';
         Elements.taskbarButtons.start.style.boxShadow = 'var(--outwards-box-shadow)';
         document.removeEventListener('click', startMenuCloseHandler);

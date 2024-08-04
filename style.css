@@ -15,7 +15,21 @@
     --light-box-shadow: hsl(0, 0%, 87%);
     --dark-box-shadow: hsl(120, 0%, 52%);
     --input-background: hsl(0, 0%, 95%);
-    
+
+    --windows-logo-top-left: hsl(0, 100%, 50%);
+    --windows-logo-top-right: hsl(120, 100%, 50%);
+    --windows-logo-bottom-left: hsl(240, 100%, 50%);
+    --windows-logo-bottom-right: hsl(60, 100%, 50%);
+
+    --app-logo-screen-color: hsl(180, 100%, 25%);
+    --app-logo-light-main-parts: hsl(0, 0%, 76%);
+    --app-logo-dark-main-parts: hsl(0, 0%, 51%);
+    --app-logo-accent-parts: hsl(247, 100%, 25%);
+    --app-logo-light-parts: hsl(0, 0%, 100%);
+    --app-logo-dark-parts: hsl(0, 0%, 0%);
+    --app-logo-text-color: hsl(0, 0%, 100%);
+    --app-logo-input-background: hsl(0, 0%, 100%);
+
     --border-width: 4px;
     --border-style: solid;
 
@@ -51,7 +65,7 @@ body {
     gap: 0.5em;
     padding: 8px;
     text-decoration: underline;
-    color: hsl(0, 0%, 100%);
+    color: var(--dark-text);
 }
 .app-desktop-shortcut:active{
 
@@ -77,11 +91,17 @@ body {
     top: 50%;
     left: 50%;
     transform: translate( -50%, -60%);
+    min-height: 640px;
+    min-width: 550px;
     padding: 4px;
     background-color: var(--main);
     border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
     box-shadow: var(--outwards-box-shadow);
+}
+.salary-calculator--hidden {
+
+    display: none;
 }
 
 
@@ -169,15 +189,16 @@ body {
 .tabs-switcher__button {
 
     position: relative;
-    top: 4px;
+    top: 12px;
     padding-block: 12px 16px;
     padding-inline: 12px;
     font-size: 1.4rem;
     color: var(--dark-text);
-    border-width: calc(var(--border-width) * 1.5) var(--border-width) 0 calc(var(--border-width));
-    border-style: var(--border-style);
+    border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
+    box-shadow: var(--outwards-box-shadow);
     background-color: var(--main);
+    clip-path: inset(0 0 6px 0);
     cursor: pointer;
     z-index: 10;
 }
@@ -204,6 +225,7 @@ body {
     padding: 20px;
     border: var(--border-width) var(--border-style);
     border-color: var(--outwards-border);
+    box-shadow: var(--outwards-box-shadow);
     z-index: 11;
 }
 .tabs__tab--hidden {
@@ -235,6 +257,7 @@ body {
     height: 100%;
     padding: 5px;
     border: none;
+    color: var(--dark-text);
     background-color: var(--input-background);
 }
 
@@ -243,7 +266,8 @@ body {
 .salary-calculator__divider-line {
 
     width: 90%;
-    height: 4px;
+    border: var(--border-style) var(--border-width);
+    border-color: var(--inwards-border);
     margin-block: 1em;
     margin-inline: auto;
 }
@@ -394,6 +418,10 @@ body {
     border: var(--border-width) var(--border-style);
     background-color: var(--main);
     cursor: pointer;
+}
+.app-buttons-section__app-button--hidden {
+
+    display: none;
 }
 .app-buttons-section__app-button:active {
 
