@@ -49,6 +49,7 @@
 body {
 
     background-color: var(--background);
+    overflow: hidden;
 }
 
 
@@ -90,9 +91,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate( -50%, -60%);
-    min-height: 640px;
-    min-width: 550px;
+    transform: translate( -50%, -50%);
     padding: 4px;
     background-color: var(--main);
     border: var(--border-width) var(--border-style);
@@ -460,4 +459,86 @@ body {
     border-color: var(--inwards-border);
     box-shadow: var(--accent);
     background-color: var(--main);
+}
+
+@media (height <= 800px) and (width >= 500px){
+
+    .salary-calculator {
+
+        transform: translate(-50%, -55%);
+    }
+}
+
+@media (width <= 500px) {
+
+    .app-desktop-shortcut {
+
+        display: none;
+    }
+    .salary-calculator {
+
+        width: 97.5%;
+        height: 97.5%;
+        min-height: none;
+        overflow: auto;
+    }
+    .title-bar__action-buttons {
+
+        display: none;
+    }
+    .task-bar {
+
+        display: none;
+    }
+}
+
+@media (orientation: landscape) and (height <= 500px) {
+
+    .app-desktop-shortcut {
+
+        display: none;
+    }
+    .salary-calculator {
+
+        transform: translate(-50%, -50%);
+        width: 97.5%;
+        height: 97.5%;
+        overflow: auto;
+    }
+    .title-bar__action-buttons {
+
+        display: none;
+    }
+    .salary-calculator__tabs {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        margin: 1em auto;
+    }
+    .tabs__tab--hidden {
+
+        display: flex;
+    }
+    .tabs__tabs-switcher {
+
+        display: none;
+    }
+    .salary-calculator__divider-line {
+
+        display: none;
+    }
+    .salary-calculator__results-box {
+
+        margin: 1em auto;
+    }
+    .salary-calculator__dialog-box {
+
+        margin: 1em auto;
+    }
+    .task-bar {
+
+        display: none;
+    }
 }

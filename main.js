@@ -6,7 +6,8 @@ const Elements = {
     },
     appWindow: {
 
-        salaryCalculator: document.querySelector('.salary-calculator')
+        salaryCalculator: document.querySelector('.salary-calculator'),
+        titleBar: document.querySelector('.salary-calculator__title-bar')
     },
     actionButtons: {
 
@@ -475,6 +476,55 @@ function setTheme(theme) {
     }
 };
 
+function makeDraggable(target, trigger, minWidth, minHeight) {
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    function checkViewportSize() {
+
+        return window.innerWidth >= minWidth && window.innerHeight >= minHeight;
+    }
+
+    function onMouseDown(event) {
+
+        if (checkViewportSize()) {
+
+            isDragging = true;
+            offsetX = event.clientX - target.offsetLeft;
+            offsetY = event.clientY - target.offsetTop;
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        }
+    }
+
+    function onMouseMove(event) {
+
+        if (isDragging) {
+            target.style.left = `${event.clientX - offsetX}px`;
+            target.style.top = `${event.clientY - offsetY}px`;
+        }
+    }
+
+    function onMouseUp() {
+
+        isDragging = false;
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+    }
+
+    trigger.addEventListener('mousedown', onMouseDown);
+
+    window.addEventListener('resize', () => {
+
+        if (!checkViewportSize() && isDragging) {
+
+            onMouseUp();
+        }
+    });
+}
+
+
 function displayTime() {
 
     let date = new Date();
@@ -493,20 +543,26 @@ function displayTime() {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    // Action buttons:
+    Elements.actionButtons.close.onclick = closeApp;
+    Elements.actionButtons.minimize.onclick = minimizeApp;
+    // Dialog buttons:
+    Elements.dialogBoxButtons.calculate.onclick = validateInputThenClaculate;
+    Elements.dialogBoxButtons.reset.onclick = resetApp;
+    // Tab switchers:
+    Elements.tabSwitchButtons.calculator.onclick = switchTabs;
+    Elements.tabSwitchButtons.configuration.onclick = switchTabs;
+    // Start menu button:
+    Elements.taskbarButtons.start.onclick = displayStartMenu;
+    // Start menu list items for themes:
     Elements.startMenu.buttons.forEach (button => {
 
         button.onclick = selectTheme;
     });
-    Elements.taskbarButtons.start.onclick = displayStartMenu;
-    Elements.actionButtons.close.onclick = closeApp;
-    Elements.actionButtons.minimize.onclick = minimizeApp;
-    Elements.dialogBoxButtons.reset.onclick = resetApp;
-    Elements.dialogBoxButtons.calculate.onclick = validateInputThenClaculate;
-    Elements.tabSwitchButtons.calculator.onclick = switchTabs;
-    Elements.tabSwitchButtons.configuration.onclick = switchTabs;
     // For time display
     setInterval(displayTime, 1000);
+    // Makes the first element draggable when holding mouse down on the second element, But the funciton will not work if you're using it in small screen size:
+    makeDraggable(Elements.appWindow.salaryCalculator, Elements.appWindow.titleBar, 500, 500);
     // Selects all the text inside each input when it receives focus.
     Elements.allInputs.forEach( (input) => {
 
