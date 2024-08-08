@@ -233,22 +233,12 @@ function validateInputThenClaculate() {
     
     Elements.allInputs.forEach (input => {
 
-        const cleanInput = cleanAndConvert(input);
+        input.value = cleanAndConvert(input);
         const labelsForAttribute = input.id;
-
+        
         if ( input.value === '' ) {
-
-            editLabel(labelsForAttribute, `Text field is empty =>`);
-            allValid = false;
-        }
-        else if ( cleanInput === '' ) {
-
-            editLabel(labelsForAttribute, `Make sure you're typing numbers =>`);
-            allValid = false;
-        }
-        else if ( input.value < 0 ) {
-
-            editLabel(labelsForAttribute, `Can't have negative numbers =>`);
+            
+            editLabel(labelsForAttribute, `Empty. Type numbers only. =>`);
             allValid = false;
         }
     })
@@ -293,7 +283,6 @@ function cleanAndConvert(input) {
 
     let value = input.value;
     let cleanInput = value.replace(/[^0-9.]+/g, '');
-
     return cleanInput;
 };
 
@@ -523,7 +512,6 @@ function makeDraggable(target, trigger, minWidth, minHeight) {
         }
     });
 }
-
 
 function displayTime() {
 
