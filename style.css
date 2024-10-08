@@ -1,544 +1,678 @@
 @font-face {
-    font-family: 'ms-sans-serif';
-    src: url(Assets/Fonts/MS\ Sans\ Serif.ttf) format('truetype');
+  font-family: 'ms-sans-serif';
+  src: url(Assets/Fonts/MS\ Sans\ Serif.ttf) format('truetype');
 }
 
 :root {
+  --border-width: 4px;
+  --border-style: solid;
+}
+/* Color Themes: */
+.default {
+  --background: hsl(180, 100%, 25%);
+  --main: hsl(0, 0%, 78%);
+  --accent: hsl(243, 100%, 26%);
+  --light-text: hsl(0, 0%, 100%);
+  --dark-text: hsl(0, 0%, 0%);
+  --light-border: hsl(0, 0%, 87%);
+  --dark-border: hsl(0, 0%, 5%);
+  --light-box-shadow: hsl(0, 0%, 87%);
+  --dark-box-shadow: hsl(120, 0%, 52%);
+  --input-background: hsl(0, 0%, 95%);
 
-    --background: hsl(180, 100%, 25%);
-    --main: hsl(0, 0%, 78%);
-    --accent: hsl(243, 100%, 26%);
-    --light-text: hsl(0, 0%, 100%);
-    --dark-text: hsl(0, 0%, 0%);
-    --light-border: hsl(0, 0%, 87%);
-    --dark-border: hsl(0, 0%, 5%);
-    --light-box-shadow: hsl(0, 0%, 87%);
-    --dark-box-shadow: hsl(120, 0%, 52%);
-    --input-background: hsl(0, 0%, 95%);
+  --windows-logo-top-left: hsl(0, 100%, 50%);
+  --windows-logo-top-right: hsl(120, 100%, 50%);
+  --windows-logo-bottom-left: hsl(240, 100%, 50%);
+  --windows-logo-bottom-right: hsl(60, 100%, 50%);
 
-    --windows-logo-top-left: hsl(0, 100%, 50%);
-    --windows-logo-top-right: hsl(120, 100%, 50%);
-    --windows-logo-bottom-left: hsl(240, 100%, 50%);
-    --windows-logo-bottom-right: hsl(60, 100%, 50%);
+  --app-logo-screen-color: hsl(180, 100%, 25%);
+  --app-logo-light-main-parts: hsl(0, 0%, 76%);
+  --app-logo-dark-main-parts: hsl(0, 0%, 51%);
+  --app-logo-accent-parts: hsl(247, 100%, 25%);
+  --app-logo-light-parts: hsl(0, 0%, 100%);
+  --app-logo-dark-parts: hsl(0, 0%, 0%);
+  --app-logo-text-color: hsl(0, 0%, 100%);
+  --app-logo-input-background: hsl(0, 0%, 100%);
 
-    --app-logo-screen-color: hsl(180, 100%, 25%);
-    --app-logo-light-main-parts: hsl(0, 0%, 76%);
-    --app-logo-dark-main-parts: hsl(0, 0%, 51%);
-    --app-logo-accent-parts: hsl(247, 100%, 25%);
-    --app-logo-light-parts: hsl(0, 0%, 100%);
-    --app-logo-dark-parts: hsl(0, 0%, 0%);
-    --app-logo-text-color: hsl(0, 0%, 100%);
-    --app-logo-input-background: hsl(0, 0%, 100%);
+  --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
+  --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
 
-    --border-width: 4px;
-    --border-style: solid;
-
-    --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
-    --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
-
-    --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
-    --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
+  --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
+  --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
 }
 
+.modern-dark {
+  --background: hsl(0, 0%, 0%);
+  --main: hsl(240, 15%, 9%);
+  --accent: hsl(240, 6%, 30%);
+  --light-text: hsl(240, 15%, 9%);
+  --dark-text: hsl(36, 77%, 47%);
+  --light-border: hsl(240, 6%, 30%);
+  --dark-border: hsl(0, 0%, 0%);
+  --light-box-shadow: hsl(243, 18%, 20%);
+  --dark-box-shadow: hsl(220, 16%, 4%);
+  --input-background: hsl(240, 5%, 20%);
+
+  --windows-logo-top-left: hsl(36, 77%, 47%);
+  --windows-logo-top-right: hsl(240, 6%, 30%);
+  --windows-logo-bottom-left: hsl(240, 6%, 30%);
+  --windows-logo-bottom-right: hsl(36, 77%, 47%);
+
+  --app-logo-screen-color: hsl(0, 0%, 0%);
+  --app-logo-light-main-parts: hsl(220, 16%, 24%);
+  --app-logo-dark-main-parts: hsl(240, 15%, 19%);
+  --app-logo-accent-parts: hsl(240, 6%, 30%);
+  --app-logo-light-parts: hsl(240, 6%, 30%);
+  --app-logo-dark-parts: hsl(240, 15%, 9%);
+  --app-logo-text-color: hsl(36, 77%, 47%);
+  --app-logo-input-background: hsl(240, 5%, 20%);
+
+  --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
+  --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
+
+  --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
+  --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
+}
+
+.violet-dark {
+  --background: hsl(288, 64%, 15%);
+  --main: hsl(291, 51%, 26%);
+  --accent: hsl(242, 66%, 37%);
+  --light-text: hsl(0, 0%, 100%);
+  --dark-text: hsl(283, 41%, 64%);
+  --light-border: hsl(292, 26%, 46%);
+  --dark-border: hsl(0, 0%, 0%);
+  --light-box-shadow: hsl(292, 40%, 63%);
+  --dark-box-shadow: hsl(292, 54%, 16%);
+  --input-background: hsl(292, 54%, 20%);
+
+  --windows-logo-top-left: hsl(283, 41%, 64%);
+  --windows-logo-top-right: hsl(309, 65%, 54%);
+  --windows-logo-bottom-left: hsl(309, 65%, 54%);
+  --windows-logo-bottom-right: hsl(283, 41%, 64%);
+
+  --app-logo-screen-color: hsl(291, 51%, 26%);
+  --app-logo-light-main-parts: hsl(292, 26%, 46%);
+  --app-logo-dark-main-parts: hsl(292, 54%, 16%);
+  --app-logo-accent-parts: hsl(242, 66%, 37%);
+  --app-logo-light-parts: hsl(292, 40%, 63%);
+  --app-logo-dark-parts: hsl(0, 0%, 0%);
+  --app-logo-text-color: hsl(283, 41%, 64%);
+  --app-logo-input-background: hsl(292, 54%, 30%);
+
+  --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
+  --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
+
+  --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
+  --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
+}
+
+.ninja-turtles {
+  --background: hsl(132, 68%, 18%);
+  --main: hsl(106, 73%, 36%);
+  --accent: hsl(13, 83%, 50%);
+  --light-text: hsl(0, 0%, 100%);
+  --dark-text: hsl(0, 0%, 0%);
+  --light-border: hsl(109, 60%, 45%);
+  --dark-border: hsl(0, 0%, 0%);
+  --light-box-shadow: hsl(112, 94%, 68%);
+  --dark-box-shadow: hsl(111, 80%, 24%);
+  --input-background: hsl(106, 68%, 72%);
+
+  --windows-logo-top-left: hsl(112, 94%, 68%);
+  --windows-logo-top-right: hsl(13, 83%, 50%);
+  --windows-logo-bottom-left: hsl(13, 83%, 50%);
+  --windows-logo-bottom-right: hsl(112, 94%, 68%);
+
+  --app-logo-screen-color: hsl(132, 68%, 18%);
+  --app-logo-light-main-parts: hsl(109, 60%, 45%);
+  --app-logo-dark-main-parts: hsl(111, 80%, 24%);
+  --app-logo-accent-parts: hsl(13, 83%, 50%);
+  --app-logo-light-parts: hsl(112, 94%, 68%);
+  --app-logo-dark-parts: hsl(0, 0%, 0%);
+  --app-logo-text-color: hsl(106, 68%, 72%);
+  --app-logo-input-background: hsl(106, 68%, 72%);
+
+  --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
+  --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
+
+  --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
+  --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
+}
+
+.bee {
+  --background: hsl(50, 79%, 31%);
+  --main: hsl(52, 69%, 51%);
+  --accent: hsl(0, 0%, 0%);
+  --light-text: hsl(53, 78%, 70%);
+  --dark-text: hsl(0, 0%, 0%);
+  --light-border: hsl(51, 68%, 55%);
+  --dark-border: hsl(0, 0%, 0%);
+  --light-box-shadow: hsl(53, 78%, 70%);
+  --dark-box-shadow: hsl(50, 80%, 17%);
+  --input-background: hsl(52, 79%, 72%);
+
+  --windows-logo-top-left: hsl(52, 69%, 51%);
+  --windows-logo-top-right: hsl(52, 79%, 72%);
+  --windows-logo-bottom-left: hsl(52, 79%, 72%);
+  --windows-logo-bottom-right: hsl(52, 69%, 51%);
+
+  --app-logo-screen-color: hsl(50, 79%, 31%);
+  --app-logo-light-main-parts: hsl(53, 78%, 70%);
+  --app-logo-dark-main-parts: hsl(50, 80%, 20%);
+  --app-logo-accent-parts: hsl(0, 0%, 0%);
+  --app-logo-light-parts: hsl(53, 78%, 70%);
+  --app-logo-dark-parts: hsl(0, 0%, 0%);
+  --app-logo-text-color: hsl(0, 0%, 0%);
+  --app-logo-input-background: hsl(52, 79%, 72%);
+
+  --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
+  --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
+
+  --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
+  --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
+}
+
+
 * {
-    margin: 0;
-    font-family: 'ms-sans-serif';
-    box-sizing: border-box;
+  margin: 0;
+  font-family: 'ms-sans-serif';
+  box-sizing: border-box;
 }
 
 body {
 
-    background-color: var(--background);
-    overflow: hidden;
+  background-color: var(--background);
+  overflow: hidden;
 }
 
 
 
 .app-desktop-shortcut {
 
-    position: absolute;
-    top: 30px;
-    left: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 0.5em;
-    padding: 8px;
-    text-decoration: underline;
-    color: var(--dark-text);
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 8px;
+  text-decoration: underline;
+  color: var(--dark-text);
 }
 .app-desktop-shortcut:active{
 
-    opacity: 0.5;
-    background-color: var(--accent);
+  opacity: 0.5;
+  background-color: var(--accent);
 }
 .app-desktop-shortcut__icon {
-    
-    width: 64px;
-    height: 64px;
-    cursor: pointer;
+  
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
 }
 .app-desktop-shortcut__title {
-    
-    cursor: pointer;
+  
+  cursor: pointer;
 }
 
 
 
 .salary-calculator {
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate( -50%, -50%);
-    padding: 4px;
-    background-color: var(--main);
-    border: var(--border-width) var(--border-style);
-    border-color: var(--outwards-border);
-    box-shadow: var(--outwards-box-shadow);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50%);
+  padding: 4px;
+  background-color: var(--main);
+  border: var(--border-width) var(--border-style);
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
 }
 .salary-calculator--hidden {
 
-    display: none;
+  display: none;
 }
 
 
 
 .salary-calculator__title-bar {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5em;
-    width: 100%;
-    padding: 8px;
-    background-color: var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5em;
+  width: 100%;
+  padding: 8px;
+  background-color: var(--accent);
 }
 .title-bar__header {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
 }
 .header__icon {
 
-    width: 48px;
-    height: 48px;
+  width: 48px;
+  height: 48px;
 }
 .header__title {
 
-    font-size: 2rem;
-    font-weight: 200;
-    color: var(--light-text);
+  font-size: 2rem;
+  font-weight: 200;
+  color: var(--light-text);
 }
 
 
 
 .title-bar__action-buttons {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1em;
 }
 .action-buttons__button {
 
-    width: 48px;
-    height: 48px;
-    padding: 4px;
-    border: var(--border-width) var(--border-style);
-    border-color: var(--outwards-border);
-    box-shadow: var(--outwards-box-shadow);
-    background-color: var(--main);
-    color: var(--dark-text);
-    cursor: pointer;
+  width: 48px;
+  height: 48px;
+  padding: 4px;
+  border: var(--border-width) var(--border-style);
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
+  background-color: var(--main);
+  color: var(--dark-text);
+  cursor: pointer;
 }
 .action-buttons__button--minimize:active,
 .action-buttons__button--close:active {
 
-    border-color: var(--inwards-border);
-    box-shadow: var(--inwards-box-shadow);
+  border-color: var(--inwards-border);
+  box-shadow: var(--inwards-box-shadow);
 }
 .button__icon {
 
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 
 
 .salary-calculator__tabs {
 
-    position: relative;
-    width: 90%;
-    margin-top: 1em;
-    margin-inline: auto;
-    font-size: 1.2rem;
-    color: var(--dark-text);
+  position: relative;
+  width: 90%;
+  margin-top: 1em;
+  margin-inline: auto;
+  font-size: 1.2rem;
+  color: var(--dark-text);
 }
 .tabs__tabs-switcher {
 
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
 }
 .tabs-switcher__button {
 
-    position: relative;
-    top: 12px;
-    padding-block: 12px 16px;
-    padding-inline: 12px;
-    font-size: 1.4rem;
-    color: var(--dark-text);
-    border: var(--border-width) var(--border-style);
-    border-color: var(--outwards-border);
-    box-shadow: var(--outwards-box-shadow);
-    background-color: var(--main);
-    clip-path: inset(0 0 6px 0);
-    cursor: pointer;
-    z-index: 10;
+  position: relative;
+  top: 12px;
+  padding-block: 12px 16px;
+  padding-inline: 12px;
+  font-size: 1.4rem;
+  color: var(--dark-text);
+  border: var(--border-width) var(--border-style);
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
+  background-color: var(--main);
+  clip-path: inset(0 0 6px 0);
+  cursor: pointer;
+  z-index: 10;
 }
 .tabs-switcher__button--calculator {
 
-    z-index: 12;
+  z-index: 12;
 }
 .tabs-switcher__button--configuration {
 
-    z-index: 10;
+  z-index: 10;
 }
 
 
 
 .tabs__tab {
 
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 1em;
-    width: 100%;
-    padding: 20px;
-    border: var(--border-width) var(--border-style);
-    border-color: var(--outwards-border);
-    box-shadow: var(--outwards-box-shadow);
-    z-index: 11;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  padding: 20px;
+  border: var(--border-width) var(--border-style);
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
+  z-index: 11;
 }
 .tabs__tab--hidden {
 
-    display: none;
+  display: none;
 }
 .tab__container {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 .tab__label {
 
-    color: var(--dark-text);
+  color: var(--dark-text);
 }
 .tab__input-container {
 
-    width: 20%;
-    min-width: 25px;
-    height: 40px;
-    border: var(--border-width) var(--border-style);
-    border-color: var(--inwards-border);
+  width: 20%;
+  min-width: 25px;
+  height: 40px;
+  border: var(--border-width) var(--border-style);
+  border-color: var(--inwards-border);
 }
 .tab__input-field {
 
-    width: 100%;
-    height: 100%;
-    padding: 5px;
-    border: none;
-    color: var(--dark-text);
-    background-color: var(--input-background);
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border: none;
+  color: var(--dark-text);
+  background-color: var(--input-background);
 }
 
 
 
 .salary-calculator__divider-line {
 
-    width: 90%;
-    border: var(--border-style) var(--border-width);
-    border-color: var(--inwards-border);
-    margin-block: 1em;
-    margin-inline: auto;
+  width: 90%;
+  border: var(--border-style) var(--border-width);
+  border-color: var(--inwards-border);
+  margin-block: 1em;
+  margin-inline: auto;
 }
 
 
 
 .salary-calculator__results-box {
 
-    min-height: 100px;
-    width: 90%;
-    margin-block: 0 1em;
-    margin-inline: auto;
-    padding: 10px;
-    line-height: 1.3em;
-    color: var(--dark-text);
-    border: var(--border-width) var(--border-style);
-    border-color: var(--inwards-border);
-    background-color: var(--input-background);
+  min-height: 100px;
+  width: 90%;
+  margin-block: 0 1em;
+  margin-inline: auto;
+  padding: 10px;
+  line-height: 1.3em;
+  color: var(--dark-text);
+  border: var(--border-width) var(--border-style);
+  border-color: var(--inwards-border);
+  background-color: var(--input-background);
 }
 
 
 
 .salary-calculator__dialog-box {
 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 0.5em;
-    width: 90%;
-    margin-block: 0 1em;
-    margin-inline: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5em;
+  width: 90%;
+  margin-block: 0 1em;
+  margin-inline: auto;
 }
 .dialog-box__button {
 
-    padding: 8px;
-    font-size: 1rem;
-    color: var(--dark-text);
-    border: var(--border-width) var(--border-style);
-    border-color: var(--outwards-border);
-    box-shadow: var(--outwards-box-shadow);
-    background-color: var(--main);
-    cursor: pointer;
+  padding: 8px;
+  font-size: 1rem;
+  color: var(--dark-text);
+  border: var(--border-width) var(--border-style);
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
+  background-color: var(--main);
+  cursor: pointer;
 }
 .dialog-box__button:active {
 
-    border-color: var(--inwards-border);
-    box-shadow: var(--inwards-box-shadow);
+  border-color: var(--inwards-border);
+  box-shadow: var(--inwards-box-shadow);
 }
 
 
 
 .task-bar {
 
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-height: 70px;
-    padding: 8px;
-    border: var(--border-width) var(--border-style);
-    border-color: var(--outwards-border);
-    box-shadow: var(--outwards-box-shadow);
-    background-color: var(--main);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 70px;
+  padding: 8px;
+  border: var(--border-width) var(--border-style);
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
+  background-color: var(--main);
 }
 .task-bar__start-menu {
 
-    position: absolute;
-    bottom: 75px;
-    left: 5px;
-    padding: 8px;
-    border: var(--border-width) var(--border-style);
-    border-color: var(--outwards-border);
-    color: var(--dark-text);
-    font-size: 1.5rem;
-    background-color: var(--main);
+  position: absolute;
+  bottom: 75px;
+  left: 5px;
+  padding: 8px;
+  border: var(--border-width) var(--border-style);
+  border-color: var(--outwards-border);
+  color: var(--dark-text);
+  font-size: 1.5rem;
+  background-color: var(--main);
 }
 .task-bar__start-menu--hidden {
 
-    display: none;
+  display: none;
 }
 .start-menu__list {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 0.5em;
-    padding: 0;
-    list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 0;
+  list-style: none;
 }
 .list__item {
 
-    width: 100%;
-    height: 100%;
-    padding: 16px;
-    color: var(--dark-text);
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  color: var(--dark-text);
+  cursor: pointer;
 }
 .list__item--original:hover {
 
-    color: hsl(0, 0%, 100%);
-    background-color: hsl(243, 100%, 26%);
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(243, 100%, 26%);
 }
 .list__item--modern-dark:hover {
 
-    color: hsl(0, 0%, 0%);
-    background-color: hsl(33, 80%, 51%);
+  color: hsl(0, 0%, 0%);
+  background-color: hsl(33, 80%, 51%);
 }
 .list__item--violet-dark:hover {
 
-    color: hsl(292, 40%, 63%);
-    background-color: hsl(295, 56%, 20%);
+  color: hsl(292, 40%, 63%);
+  background-color: hsl(295, 56%, 20%);
 }
 .list__item--ninja-turtles:hover {
 
-    color: hsl(0, 0%, 0%);
-    background-color: hsl(44, 81%, 61%);
+  color: hsl(0, 0%, 0%);
+  background-color: hsl(44, 81%, 61%);
 }
 .list__item--bee:hover {
 
-    color: hsl(0, 0%, 100%);
-    background-color: hsl(190, 33%, 4%);
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(190, 33%, 4%);
 }
 
 
 
 .task-bar__app-buttons-section {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-    height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  height: 50px;
 }
 .app-buttons-section__app-button {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.4em;
-    height: 100%;
-    padding: 12px;
-    font-size: 1.3rem;
-    color: var(--dark-text);
-    border: var(--border-width) var(--border-style);
-    background-color: var(--main);
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4em;
+  height: 100%;
+  padding: 12px;
+  font-size: 1.3rem;
+  color: var(--dark-text);
+  border: var(--border-width) var(--border-style);
+  background-color: var(--main);
+  cursor: pointer;
 }
 .app-buttons-section__app-button--hidden {
 
-    display: none;
+  display: none;
 }
 .app-buttons-section__app-button:active {
 
-    border-color: var(--inwards-border);
-    box-shadow: var(--inwards-box-shadow);
+  border-color: var(--inwards-border);
+  box-shadow: var(--inwards-box-shadow);
 }
 .app-button__icon {
 
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
 .app-buttons-section__app-button--start {
 
-    border-color: var(--outwards-border);
-    box-shadow: var(--outwards-box-shadow);
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
 }
 .app-buttons-section__app-button--calculator {
 
-    border-color: var(--inwards-border);
-    box-shadow: var(--inwards-box-shadow);
+  border-color: var(--inwards-border);
+  box-shadow: var(--inwards-box-shadow);
 }
 
 
 
 .task-bar__system-tray-section {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 50px;
-    padding: 8px;
-    font-size: 1rem;
-    color: var(--dark-text);
-    border: var(--border-width) var(--border-style);
-    border-color: var(--inwards-border);
-    box-shadow: var(--accent);
-    background-color: var(--main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  padding: 8px;
+  font-size: 1rem;
+  color: var(--dark-text);
+  border: var(--border-width) var(--border-style);
+  border-color: var(--inwards-border);
+  box-shadow: var(--accent);
+  background-color: var(--main);
 }
 
 @media (height <= 800px) and (width >= 500px){
 
-    .salary-calculator {
+  .salary-calculator {
 
-        transform: translate(-50%, -55%);
-    }
+      transform: translate(-50%, -55%);
+  }
 }
 
 @media (width <= 500px) {
 
-    .app-desktop-shortcut {
+  .app-desktop-shortcut {
 
-        display: none;
-    }
-    .salary-calculator {
+      display: none;
+  }
+  .salary-calculator {
 
-        width: 97.5%;
-        height: 97.5%;
-        min-height: none;
-        overflow: auto;
-    }
-    .title-bar__action-buttons {
+      width: 97.5%;
+      height: 97.5%;
+      min-height: none;
+      overflow: auto;
+  }
+  .title-bar__action-buttons {
 
-        display: none;
-    }
-    .task-bar {
+      display: none;
+  }
+  .task-bar {
 
-        display: none;
-    }
+      display: none;
+  }
 }
 
 @media (orientation: landscape) and (height <= 500px) {
 
-    .app-desktop-shortcut {
+  .app-desktop-shortcut {
 
-        display: none;
-    }
-    .salary-calculator {
+      display: none;
+  }
+  .salary-calculator {
 
-        transform: translate(-50%, -50%);
-        width: 97.5%;
-        height: 97.5%;
-        overflow: auto;
-    }
-    .title-bar__action-buttons {
+      transform: translate(-50%, -50%);
+      width: 97.5%;
+      height: 97.5%;
+      overflow: auto;
+  }
+  .title-bar__action-buttons {
 
-        display: none;
-    }
-    .salary-calculator__tabs {
+      display: none;
+  }
+  .salary-calculator__tabs {
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1em;
-        margin: 1em auto;
-    }
-    .tabs__tab--hidden {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+      margin: 1em auto;
+  }
+  .tabs__tab--hidden {
 
-        display: flex;
-    }
-    .tabs__tabs-switcher {
+      display: flex;
+  }
+  .tabs__tabs-switcher {
 
-        display: none;
-    }
-    .salary-calculator__divider-line {
+      display: none;
+  }
+  .salary-calculator__divider-line {
 
-        display: none;
-    }
-    .salary-calculator__results-box {
+      display: none;
+  }
+  .salary-calculator__results-box {
 
-        margin: 1em auto;
-    }
-    .salary-calculator__dialog-box {
+      margin: 1em auto;
+  }
+  .salary-calculator__dialog-box {
 
-        margin: 1em auto;
-    }
-    .task-bar {
+      margin: 1em auto;
+  }
+  .task-bar {
 
-        display: none;
-    }
+      display: none;
+  }
 }
