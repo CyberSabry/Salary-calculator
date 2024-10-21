@@ -4,155 +4,120 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Salary Calculator</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
+  <link rel="stylesheet" href="/styles/style.css">
 </head>
-<body>
-
-  <div class="app-desktop-shortcut">
-    <svg class="app-desktop-shortcut__icon">
+<body class="original">
+  <!-- App's desktop shortcut -->
+  <div class="dsk-shortcut" id="desktop-shortcut">
+    <svg class="dsk-shortcut__icon">
       <use href="#calculator-app-icon" />
     </svg>
-    <p class="app-desktop-shortcut__title">Salary calculator</p>
+    <p class="dsk-shortcut__ttl">Salary calculator</p>
   </div>
-
-  <main class="salary-calculator">
-
-    <!-- Top part with icon, Display name, and size controls -->
-    <div class="salary-calculator__title-bar">
-      <div class="title-bar__header">
-        <svg class="header__icon">
+  <!-- Salary calculator window. -->
+  <main class="sc sc--calc-tab" id="salary-calculator">
+    <!-- Title bar with the app's icon, display name, and size controls. -->
+    <div class="sc__ttl-bar">
+      <div class="ttl-bar__hdr">
+        <svg class="hdr__icon">
           <use href="#calculator-app-icon" />
         </svg>
-        <h1 class="header__title">Salary calculator</h1>
+        <h1 class="hdr__ttl">Salary calculator</h1>
       </div>
-      <div class="title-bar__action-buttons">
-        <button class="action-buttons__button action-buttons__button--minimize">
-          <svg class="button__icon">
+      <!-- Action buttons section -->
+      <div class="ttl-bar__act-btns">
+        <button class="act-btns__btn act-btns__btn--minimize" id="minimize">
+          <svg class="btn__icon">
             <use href="#minimize-icon" />
           </svg>                                                                                                                         
         </button>
-        <button class="action-buttons__button action-buttons__button--maximize">
-          <svg class="button__icon">
+        <button class="act-btns__btn act-btns__btn--maximize">
+          <svg class="btn__icon">
             <use href="#maximize-icon" />
           </svg>
         </button>
-        <button class="action-buttons__button action-buttons__button--close">
-          <svg class="button__icon">
+        <button class="act-btns__btn act-btns__btn--close" id="close">
+          <svg class="btn__icon">
             <use href="#close-icon" />
           </svg>
         </button>
       </div>
     </div>
-
-    
-    <section class="salary-calculator__tabs">
-        
-      <!-- Tabs controls for Calculator and Configuration -->
-      <section class="tabs__tabs-switcher">
-        <button class="tabs-switcher__button tabs-switcher__button--calculator" data-value="0">Calculator</button>
-        <button class="tabs-switcher__button tabs-switcher__button--configuration" data-value="1">Configuration</button>
-      </section>
-
-      <!-- Calculator tab -->
-      <section class="tabs__tab" id="calculator-tab">
-        <div class="tab__container">
-          <label for="month-year" class="tab__label" data-value="0">Date:</label>
-          <div class="tab__input-container">
-            <input type="text" name="month-year" class="tab__input-field" id="month-year">
-          </div>
+    <!-- Tabs controls for Calculator and Configuration -->
+    <section class="sc__tabs-swtchr">
+      <button class="tabs-swtchr__btn tabs-swtchr__btn--calc" data-value="0">Calculator</button>
+      <button class="tabs-swtchr__btn tabs-swtchr__btn--config" data-value="1">Configuration</button>
+    </section>
+    <form class="sc__form" id="form">
+      <section class="form__tab">
+        <div class="tab__row">
+          <label for="month" class="tab__label" data-value="0">Month:</label>
+          <input type="date" name="month" class="tab__text-input" id="month" required>
         </div>
-        <div class="tab__container">
+        <div class="tab__row tab__row--calc">
           <label for="salary" class="tab__label" data-value="1">Salary:</label>
-          <div class="tab__input-container">
-            <input type="text" name="salary" class="tab__input-field" id="salary" required>
-          </div>
+          <input type="number" name="salary" class="tab__text-input" id="salary" step="0.01" required>
         </div>
-        <div class="tab__container">
+        <div class="tab__row tab__row--calc">
           <label for="days-absent" class="tab__label" data-value="2">Days absent:</label>
-          <div class="tab__input-container">
-            <input type="text" name="days-absent" class="tab__input-field" id="days-absent" value="0">
-          </div>
+          <input type="number" name="daysAbsent" class="tab__text-input" id="days-absent" value="0" step="1" required>
         </div>
-        <div class="tab__container">
+        <div class="tab__row tab__row--calc">
           <label for="overtime-hours" class="tab__label" data-value="3">Overtime hours:</label>
-          <div class="tab__input-container">
-            <input type="text" name="overtime-hours" class="tab__input-field" id="overtime-hours" value="0">
-          </div>
+          <input type="number" name="overtimeHours" class="tab__text-input" id="overtime-hours" value="0" step="0.01" requiredinput>
         </div>
-      </section>
-
-        <!-- Configuration tab -->
-      <section class="tabs__tab tabs__tab--hidden" id="configuration-tab">
-        <div class="tab__container">
+        <div class="tab__row tab__row--config">
           <label for="base-days" class="tab__label" data-value="4">Base days:</label>
-          <div class="tab__input-container">
-            <input type="text" name="base-days" class="tab__input-field" id="base-days" value="30" required>
-          </div>
+          <input type="number" name="baseDays" class="tab__text-input" id="base-days" value="30" step="1" required>
         </div>
-        <div class="tab__container">
+        <div class="tab__row tab__row--config">
           <label for="base-hours" class="tab__label" data-value="5">Base hours:</label>
-          <div class="tab__input-container">
-            <input type="text" name="base-hours" class="tab__input-field" id="base-hours" value="225" required>
-          </div>
+          <input type="number" name="baseHours" class="tab__text-input" id="base-hours" value="225" step="0.01" required>
         </div>
-        <div class="tab__container">
+        <div class="tab__row tab__row--config">
           <label for="overtime-rate" class="tab__label" data-value="6">Overtime rate:</label>
-          <div class="tab__input-container">
-            <input type="text" name="overtime-rate" class="tab__input-field" id="overtime-rate" value="1.5" required>
-          </div>
+          <input type="number" name="overtimeRate" class="tab__text-input" id="overtime-rate" value="1.5" step="0.01" required>
         </div>
-      </section>
-    </section>
-
-    <hr class="salary-calculator__divider-line">
-
-    <!-- Results box where it shows the output -->
-    <section class="salary-calculator__results-box">
-      <!-- JavaScript output here -->
-    </section>
-
-    <!-- Dialog box -->
-    <section class="salary-calculator__dialog-box">
-      <button class="dialog-box__button dialog-box__button--reset">Reset</button>
-      <button class="dialog-box__button dialog-box__button--calculate">Calculate</button>
-    </section>
+        </section>
+        <!-- Results box where it shows the output -->
+        <section class="form__results-box" id="results-box"><!-- JavaScript output here --></section>
+        <!-- Dialog box -->
+        <section class="form__dialog-box">
+          <input type="reset" class="dialog-box__btn dialog-box__btn--reset">
+          <input type="submit" class="dialog-box__btn dialog-box__btn--calculate" value="Calculate">
+        </section>
+    </form>
   </main>
 
   <!-- Windows 95 task bar like bottom task bar -->
   <footer class="task-bar">
-
-    <section class="task-bar__start-menu task-bar__start-menu--hidden">
-      <ul class="start-menu__list">
-        <li class="list__item list__item--original" data-value="0">Original</li>
-        <li class="list__item list__item--modern-dark" data-value="1">Modern dark</li>
-        <li class="list__item list__item--violet-dark" data-value="2">Violet dark</li>
-        <li class="list__item list__item--ninja-turtles" data-value="3">Ninja turtles</li>
-        <li class="list__item list__item--bee" data-value="4">Bee</li>
+    <section class="task-bar__start task-bar__start--hidden" id="start-menu">
+      <ul class="start__list">
+        <li class="item item--original" data-value="original">Original</li>
+        <li class="item item--modern-dark" data-value="modern-dark">Modern dark</li>
+        <li class="item item--violet-dark" data-value="violet-dark">Violet dark</li>
+        <li class="item item--ninja-turtles" data-value="ninja-turtles">Ninja turtles</li>
+        <li class="item item--bee" data-value="bee">Bee</li>
       </ul>
     </section>
     <!-- Open apps section it's functional! -->
-    <section class="task-bar__app-buttons-section">
-      <button class="app-buttons-section__app-button app-buttons-section__app-button--start">
-        <svg class="app-button__icon">
+    <section class="task-bar__apps">
+      <button class="apps__button apps__button--start" id="start-button">
+        <svg class="button__icon">
           <use href="#windows-icon" />
         </svg>
         Start
       </button>
-      <button class="app-buttons-section__app-button app-buttons-section__app-button--calculator">
-        <svg class="app-button__icon">
+      <button class="apps__button apps__button--calculator apps__button--pressed" id="calculator-button">
+        <svg class="button__icon">
           <use href="#calculator-app-icon" />
         </svg>
         Salary calculator
       </button>
     </section>
-
     <!-- System tray that shows current time -->
-    <section class="task-bar__system-tray-section">
-        <p class="system-tray-section__clock-face"></p>
+    <section class="task-bar__tray">
+        <p class="tray__clock" id="clock"></p>
     </section>
   </footer>
 

@@ -1,14 +1,30 @@
 @font-face {
-  font-family: 'ms-sans-serif';
-  src: url(Assets/Fonts/MS\ Sans\ Serif.ttf) format('truetype');
+  font-family: "ms-sans-serif";
+  src: url(/Assets/Fonts/MS\ Sans\ Serif.ttf) format("truetype");
 }
-
 :root {
-  --border-width: 4px;
+  --border-width: 0.25rem;
   --border-style: solid;
 }
+
+html {
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "ms-sans-serif";
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  overflow: hidden;
+}
+
 /* Color Themes: */
-.default {
+.original {
   --background: hsl(180, 100%, 25%);
   --main: hsl(0, 0%, 78%);
   --accent: hsl(243, 100%, 26%);
@@ -19,12 +35,10 @@
   --light-box-shadow: hsl(0, 0%, 87%);
   --dark-box-shadow: hsl(120, 0%, 52%);
   --input-background: hsl(0, 0%, 95%);
-
   --windows-logo-top-left: hsl(0, 100%, 50%);
   --windows-logo-top-right: hsl(120, 100%, 50%);
   --windows-logo-bottom-left: hsl(240, 100%, 50%);
   --windows-logo-bottom-right: hsl(60, 100%, 50%);
-
   --app-logo-screen-color: hsl(180, 100%, 25%);
   --app-logo-light-main-parts: hsl(0, 0%, 76%);
   --app-logo-dark-main-parts: hsl(0, 0%, 51%);
@@ -33,10 +47,8 @@
   --app-logo-dark-parts: hsl(0, 0%, 0%);
   --app-logo-text-color: hsl(0, 0%, 100%);
   --app-logo-input-background: hsl(0, 0%, 100%);
-
   --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
   --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
-
   --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
   --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
 }
@@ -52,12 +64,10 @@
   --light-box-shadow: hsl(243, 18%, 20%);
   --dark-box-shadow: hsl(220, 16%, 4%);
   --input-background: hsl(240, 5%, 20%);
-
   --windows-logo-top-left: hsl(36, 77%, 47%);
   --windows-logo-top-right: hsl(240, 6%, 30%);
   --windows-logo-bottom-left: hsl(240, 6%, 30%);
   --windows-logo-bottom-right: hsl(36, 77%, 47%);
-
   --app-logo-screen-color: hsl(0, 0%, 0%);
   --app-logo-light-main-parts: hsl(220, 16%, 24%);
   --app-logo-dark-main-parts: hsl(240, 15%, 19%);
@@ -66,10 +76,8 @@
   --app-logo-dark-parts: hsl(240, 15%, 9%);
   --app-logo-text-color: hsl(36, 77%, 47%);
   --app-logo-input-background: hsl(240, 5%, 20%);
-
   --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
   --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
-
   --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
   --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
 }
@@ -85,12 +93,10 @@
   --light-box-shadow: hsl(292, 40%, 63%);
   --dark-box-shadow: hsl(292, 54%, 16%);
   --input-background: hsl(292, 54%, 20%);
-
   --windows-logo-top-left: hsl(283, 41%, 64%);
   --windows-logo-top-right: hsl(309, 65%, 54%);
   --windows-logo-bottom-left: hsl(309, 65%, 54%);
   --windows-logo-bottom-right: hsl(283, 41%, 64%);
-
   --app-logo-screen-color: hsl(291, 51%, 26%);
   --app-logo-light-main-parts: hsl(292, 26%, 46%);
   --app-logo-dark-main-parts: hsl(292, 54%, 16%);
@@ -99,10 +105,8 @@
   --app-logo-dark-parts: hsl(0, 0%, 0%);
   --app-logo-text-color: hsl(283, 41%, 64%);
   --app-logo-input-background: hsl(292, 54%, 30%);
-
   --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
   --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
-
   --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
   --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
 }
@@ -118,12 +122,10 @@
   --light-box-shadow: hsl(112, 94%, 68%);
   --dark-box-shadow: hsl(111, 80%, 24%);
   --input-background: hsl(106, 68%, 72%);
-
   --windows-logo-top-left: hsl(112, 94%, 68%);
   --windows-logo-top-right: hsl(13, 83%, 50%);
   --windows-logo-bottom-left: hsl(13, 83%, 50%);
   --windows-logo-bottom-right: hsl(112, 94%, 68%);
-
   --app-logo-screen-color: hsl(132, 68%, 18%);
   --app-logo-light-main-parts: hsl(109, 60%, 45%);
   --app-logo-dark-main-parts: hsl(111, 80%, 24%);
@@ -132,10 +134,8 @@
   --app-logo-dark-parts: hsl(0, 0%, 0%);
   --app-logo-text-color: hsl(106, 68%, 72%);
   --app-logo-input-background: hsl(106, 68%, 72%);
-
   --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
   --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
-
   --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
   --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
 }
@@ -151,12 +151,10 @@
   --light-box-shadow: hsl(53, 78%, 70%);
   --dark-box-shadow: hsl(50, 80%, 17%);
   --input-background: hsl(52, 79%, 72%);
-
   --windows-logo-top-left: hsl(52, 69%, 51%);
   --windows-logo-top-right: hsl(52, 79%, 72%);
   --windows-logo-bottom-left: hsl(52, 79%, 72%);
   --windows-logo-bottom-right: hsl(52, 69%, 51%);
-
   --app-logo-screen-color: hsl(50, 79%, 31%);
   --app-logo-light-main-parts: hsl(53, 78%, 70%);
   --app-logo-dark-main-parts: hsl(50, 80%, 20%);
@@ -165,514 +163,384 @@
   --app-logo-dark-parts: hsl(0, 0%, 0%);
   --app-logo-text-color: hsl(0, 0%, 0%);
   --app-logo-input-background: hsl(52, 79%, 72%);
-
   --outwards-border: var(--light-border) var(--dark-border) var(--dark-border) var(--light-border);
   --inwards-border: var(--dark-border) var(--light-border) var(--light-border) var(--dark-border);
-
   --outwards-box-shadow: var(--light-box-shadow) 1px 1px 0px 1px inset, var(--dark-box-shadow) -1px -1px 0px 1px inset;
   --inwards-box-shadow: var(--dark-box-shadow) 1px 1px 0px 1px inset, var(--light-box-shadow) -1px -1px 0px 1px inset;
 }
 
-
-* {
-  margin: 0;
-  font-family: 'ms-sans-serif';
-  box-sizing: border-box;
-}
-
-body {
-
-  background-color: var(--background);
-  overflow: hidden;
-}
-
-
-
-.app-desktop-shortcut {
-
-  position: absolute;
-  top: 30px;
-  left: 20px;
+/* Utility classes and mixins. */
+/* App's desktop shortcut */
+.dsk-shortcut {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 0.5em;
-  padding: 8px;
+  gap: 0.5rem;
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+  padding: 0.5rem;
   text-decoration: underline;
   color: var(--dark-text);
 }
-.app-desktop-shortcut:active{
-
+.dsk-shortcut:active {
   opacity: 0.5;
   background-color: var(--accent);
 }
-.app-desktop-shortcut__icon {
-  
-  width: 64px;
-  height: 64px;
+.dsk-shortcut .dsk-shortcut__icon {
+  width: 4rem;
+  height: 4rem;
   cursor: pointer;
 }
-.app-desktop-shortcut__title {
-  
+.dsk-shortcut .dsk-shortcut__ttl {
   cursor: pointer;
 }
 
-
-
-.salary-calculator {
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate( -50%, -50%);
-  padding: 4px;
-  background-color: var(--main);
+/* Salary Calculator */
+.sc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
   border: var(--border-width) var(--border-style);
   border-color: var(--outwards-border);
   box-shadow: var(--outwards-box-shadow);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.2rem;
+  background-color: var(--main);
 }
-.salary-calculator--hidden {
-
+.sc--hidden {
   display: none;
 }
-
-
-
-.salary-calculator__title-bar {
-
+.sc__ttl-bar {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 5em;
+  gap: 5rem;
   width: 100%;
-  padding: 8px;
+  padding: 0.5rem;
   background-color: var(--accent);
 }
-.title-bar__header {
-
+.sc__ttl-bar .ttl-bar__hdr {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 1rem;
 }
-.header__icon {
-
-  width: 48px;
-  height: 48px;
+.sc__ttl-bar .ttl-bar__hdr .hdr__icon {
+  width: 3rem;
+  height: 3rem;
 }
-.header__title {
-
+.sc__ttl-bar .ttl-bar__hdr .hdr__ttl {
   font-size: 2rem;
   font-weight: 200;
   color: var(--light-text);
 }
-
-
-
-.title-bar__action-buttons {
-
+.sc__ttl-bar .ttl-bar__act-btns {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 0.1em;
+  gap: 0.125rem;
 }
-.action-buttons__button {
-
-  width: 48px;
-  height: 48px;
-  padding: 4px;
+.sc__ttl-bar .ttl-bar__act-btns .act-btns__btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 0.25rem;
   border: var(--border-width) var(--border-style);
   border-color: var(--outwards-border);
   box-shadow: var(--outwards-box-shadow);
   background-color: var(--main);
   color: var(--dark-text);
   cursor: pointer;
+  width: 3rem;
+  height: 3rem;
 }
-.action-buttons__button--minimize:active,
-.action-buttons__button--close:active {
-
+.sc__ttl-bar .ttl-bar__act-btns .act-btns__btn:active {
   border-color: var(--inwards-border);
   box-shadow: var(--inwards-box-shadow);
 }
-.button__icon {
-
-  width: 24px;
-  height: 24px;
+.sc__ttl-bar .ttl-bar__act-btns .act-btns__btn--maximize:active {
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
 }
-
-
-
-.salary-calculator__tabs {
-
-  position: relative;
-  width: 90%;
-  margin-top: 1em;
-  margin-inline: auto;
-  font-size: 1.2rem;
-  color: var(--dark-text);
+.sc__ttl-bar .ttl-bar__act-btns .act-btns__btn .btn__icon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
-.tabs__tabs-switcher {
-
+.sc__tabs-swtchr {
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
-}
-.tabs-switcher__button {
-
+  gap: 0;
   position: relative;
-  top: 12px;
-  padding-block: 12px 16px;
-  padding-inline: 12px;
-  font-size: 1.4rem;
-  color: var(--dark-text);
+  top: 0.75rem;
+  width: 95%;
+}
+.sc__tabs-swtchr .tabs-swtchr__btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 0.25rem;
   border: var(--border-width) var(--border-style);
   border-color: var(--outwards-border);
   box-shadow: var(--outwards-box-shadow);
   background-color: var(--main);
-  clip-path: inset(0 0 6px 0);
+  color: var(--dark-text);
   cursor: pointer;
-  z-index: 10;
+  padding-block: 12px 16px;
+  padding-inline: 12px;
+  font-size: 1.5rem;
+  -webkit-clip-path: inset(0 0 6px 0);
+          clip-path: inset(0 0 6px 0);
 }
-.tabs-switcher__button--calculator {
-
-  z-index: 12;
+.sc__tabs-swtchr .tabs-swtchr__btn:active {
+  border-color: var(--inwards-border);
+  box-shadow: var(--inwards-box-shadow);
 }
-.tabs-switcher__button--configuration {
-
-  z-index: 10;
+.sc__tabs-swtchr .tabs-swtchr__btn:active {
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
 }
-
-
-
-.tabs__tab {
-
-  position: relative;
+.sc__form {
+  display: relative;
+  width: 95%;
+  z-index: 11;
+}
+.sc__form .form__tab {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 1em;
-  width: 100%;
-  padding: 20px;
+  gap: 1rem;
   border: var(--border-width) var(--border-style);
   border-color: var(--outwards-border);
   box-shadow: var(--outwards-box-shadow);
-  z-index: 11;
+  width: 100%;
+  padding: 1rem;
 }
-.tabs__tab--hidden {
-
-  display: none;
-}
-.tab__container {
-
+.sc__form .form__tab .tab__row {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 0;
   width: 100%;
 }
-.tab__label {
-
+.sc__form .form__tab .tab__row .tab__label {
   color: var(--dark-text);
 }
-.tab__input-container {
-
-  width: 20%;
-  min-width: 25px;
-  height: 40px;
+.sc__form .form__tab .tab__row .tab__text-input {
   border: var(--border-width) var(--border-style);
   border-color: var(--inwards-border);
-}
-.tab__input-field {
-
-  width: 100%;
-  height: 100%;
-  padding: 5px;
-  border: none;
   color: var(--dark-text);
   background-color: var(--input-background);
+  width: 8rem;
+  height: 2rem;
+  padding: 0.25rem;
 }
-
-
-
-.salary-calculator__divider-line {
-
-  width: 90%;
-  border: var(--border-style) var(--border-width);
+.sc__form .form__tab .tab__row .tab__text-input:focus {
+  outline: none;
+}
+.sc__form .form__results-box {
+  border: var(--border-width) var(--border-style);
   border-color: var(--inwards-border);
-  margin-block: 1em;
-  margin-inline: auto;
-}
-
-
-
-.salary-calculator__results-box {
-
-  min-height: 100px;
-  width: 90%;
-  margin-block: 0 1em;
+  color: var(--dark-text);
+  background-color: var(--input-background);
+  min-height: 6.25rem;
+  width: 95%;
+  margin-block: 0.5rem;
   margin-inline: auto;
   padding: 10px;
   line-height: 1.3em;
-  color: var(--dark-text);
-  border: var(--border-width) var(--border-style);
-  border-color: var(--inwards-border);
-  background-color: var(--input-background);
 }
-
-
-
-.salary-calculator__dialog-box {
-
+.sc__form .form__dialog-box {
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  gap: 0.5em;
-  width: 90%;
-  margin-block: 0 1em;
+  gap: 0.5rem;
+  width: 100%;
+  margin-block: 0 0.5rem;
   margin-inline: auto;
 }
-.dialog-box__button {
-
-  padding: 8px;
-  font-size: 1rem;
-  color: var(--dark-text);
+.sc__form .form__dialog-box .dialog-box__btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 0.25rem;
   border: var(--border-width) var(--border-style);
   border-color: var(--outwards-border);
   box-shadow: var(--outwards-box-shadow);
   background-color: var(--main);
+  color: var(--dark-text);
   cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
-.dialog-box__button:active {
-
+.sc__form .form__dialog-box .dialog-box__btn:active {
   border-color: var(--inwards-border);
   box-shadow: var(--inwards-box-shadow);
 }
+.sc--calc-tab .sc__form .tab__row--config {
+  display: none;
+}
+.sc--calc-tab .tabs-swtchr__btn--calc {
+  z-index: 12;
+}
+.sc--calc-tab .tabs-swtchr__btn--config {
+  z-index: 10;
+}
+.sc--config-tab .sc__form .tab__row--calc {
+  display: none;
+}
+.sc--config-tab .tabs-swtchr__btn--config {
+  z-index: 12;
+}
+.sc--config-tab .tabs-swtchr__btn--calc {
+  z-index: 10;
+}
 
-
-
+/* Task bar */
 .task-bar {
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  border: var(--border-width) var(--border-style);
+  border-color: var(--outwards-border);
+  box-shadow: var(--outwards-box-shadow);
   position: absolute;
   left: 0;
   bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
-  min-height: 70px;
-  padding: 8px;
+  padding: 0.5rem;
+  color: var(--dark-text);
+  background-color: var(--main);
+}
+.task-bar .task-bar__start {
   border: var(--border-width) var(--border-style);
   border-color: var(--outwards-border);
   box-shadow: var(--outwards-box-shadow);
-  background-color: var(--main);
-}
-.task-bar__start-menu {
-
   position: absolute;
-  bottom: 75px;
-  left: 5px;
-  padding: 8px;
-  border: var(--border-width) var(--border-style);
-  border-color: var(--outwards-border);
-  color: var(--dark-text);
+  bottom: 5rem;
+  left: 0.5rem;
+  padding: 0.5rem;
   font-size: 1.5rem;
   background-color: var(--main);
 }
-.task-bar__start-menu--hidden {
-
+.task-bar .task-bar__start--hidden {
   display: none;
 }
-.start-menu__list {
-
+.task-bar .task-bar__start .start__list {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 0.5em;
-  padding: 0;
+  gap: 0.5rem;
   list-style: none;
 }
-.list__item {
-
+.task-bar .task-bar__start .start__list .item {
   width: 100%;
   height: 100%;
-  padding: 16px;
+  padding: 0.5rem;
   color: var(--dark-text);
   cursor: pointer;
 }
-.list__item--original:hover {
-
+.task-bar .task-bar__start .start__list .item--original:hover {
   color: hsl(0, 0%, 100%);
   background-color: hsl(243, 100%, 26%);
 }
-.list__item--modern-dark:hover {
-
+.task-bar .task-bar__start .start__list .item--modern-dark:hover {
   color: hsl(0, 0%, 0%);
   background-color: hsl(33, 80%, 51%);
 }
-.list__item--violet-dark:hover {
-
+.task-bar .task-bar__start .start__list .item--violet-dark:hover {
   color: hsl(292, 40%, 63%);
   background-color: hsl(295, 56%, 20%);
 }
-.list__item--ninja-turtles:hover {
-
+.task-bar .task-bar__start .start__list .item--ninja-turtles:hover {
   color: hsl(0, 0%, 0%);
   background-color: hsl(44, 81%, 61%);
 }
-.list__item--bee:hover {
-
+.task-bar .task-bar__start .start__list .item--bee:hover {
   color: hsl(0, 0%, 100%);
   background-color: hsl(190, 33%, 4%);
 }
-
-
-
-.task-bar__app-buttons-section {
-
+.task-bar .task-bar__apps {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1em;
-  height: 50px;
+  gap: 1rem;
+  height: 3.125rem;
 }
-.app-buttons-section__app-button {
-
+.task-bar .task-bar__apps .apps__button {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 0.4em;
-  height: 100%;
-  padding: 12px;
-  font-size: 1.3rem;
-  color: var(--dark-text);
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 0.25rem;
   border: var(--border-width) var(--border-style);
-  background-color: var(--main);
-  cursor: pointer;
-}
-.app-buttons-section__app-button--hidden {
-
-  display: none;
-}
-.app-buttons-section__app-button:active {
-
-  border-color: var(--inwards-border);
-  box-shadow: var(--inwards-box-shadow);
-}
-.app-button__icon {
-
-  width: 32px;
-  height: 32px;
-}
-.app-buttons-section__app-button--start {
-
   border-color: var(--outwards-border);
   box-shadow: var(--outwards-box-shadow);
+  background-color: var(--main);
+  color: var(--dark-text);
+  cursor: pointer;
+  height: 100%;
+  padding: 0.5rem;
+  font-size: 1.25rem;
 }
-.app-buttons-section__app-button--calculator {
-
+.task-bar .task-bar__apps .apps__button:active {
   border-color: var(--inwards-border);
   box-shadow: var(--inwards-box-shadow);
 }
-
-
-
-.task-bar__system-tray-section {
-
+.task-bar .task-bar__apps .apps__button--hidden {
+  display: none;
+}
+.task-bar .task-bar__apps .apps__button--pressed {
+  border-color: var(--inwards-border);
+  box-shadow: var(--inwards-box-shadow);
+}
+.task-bar .task-bar__apps .apps__button .button__icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+}
+.task-bar .task-bar__tray {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 50px;
-  padding: 8px;
-  font-size: 1rem;
-  color: var(--dark-text);
+  gap: 0;
   border: var(--border-width) var(--border-style);
   border-color: var(--inwards-border);
-  box-shadow: var(--accent);
-  background-color: var(--main);
-}
-
-@media (height <= 800px) and (width >= 500px){
-
-  .salary-calculator {
-
-      transform: translate(-50%, -55%);
-  }
-}
-
-@media (width <= 500px) {
-
-  .app-desktop-shortcut {
-
-      display: none;
-  }
-  .salary-calculator {
-
-      width: 97.5%;
-      height: 97.5%;
-      min-height: none;
-      overflow: auto;
-  }
-  .title-bar__action-buttons {
-
-      display: none;
-  }
-  .task-bar {
-
-      display: none;
-  }
-}
-
-@media (orientation: landscape) and (height <= 500px) {
-
-  .app-desktop-shortcut {
-
-      display: none;
-  }
-  .salary-calculator {
-
-      transform: translate(-50%, -50%);
-      width: 97.5%;
-      height: 97.5%;
-      overflow: auto;
-  }
-  .title-bar__action-buttons {
-
-      display: none;
-  }
-  .salary-calculator__tabs {
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1em;
-      margin: 1em auto;
-  }
-  .tabs__tab--hidden {
-
-      display: flex;
-  }
-  .tabs__tabs-switcher {
-
-      display: none;
-  }
-  .salary-calculator__divider-line {
-
-      display: none;
-  }
-  .salary-calculator__results-box {
-
-      margin: 1em auto;
-  }
-  .salary-calculator__dialog-box {
-
-      margin: 1em auto;
-  }
-  .task-bar {
-
-      display: none;
-  }
-}
+  color: var(--dark-text);
+  background-color: var(--input-background);
+  width: 6rem;
+  height: 3rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}/*# sourceMappingURL=style.css.map */
